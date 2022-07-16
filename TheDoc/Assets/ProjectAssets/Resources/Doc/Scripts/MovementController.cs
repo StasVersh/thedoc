@@ -9,27 +9,33 @@ namespace ProjectAssets.Resources.Doc.Scripts
     {
         [SerializeField] private float speed;
         [SerializeField] private float jumpPower;
+        [SerializeField] private float raydistance;
         private Rigidbody2D _rigidbody;
+        private GroundCheckController _groundChecker;
+        private bool _onGround;
 
         private void Start()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
+            _groundChecker = transform.Find("GroundChecker").GetComponent<GroundCheckController>();
         }
 
         private void Update()
         {
-            if(Input.GetKey(KeyCode.A)) Move(Vector2.left);
-            if(Input.GetKey(KeyCode.D)) Move(Vector2.right);
             if(Input.GetKeyDown(KeyCode.Space)) Jump();
         }
 
-        private void Move(Vector2 derection)
+        private void FixedUpdate()
         {
-            transform.Translate(derection * speed);
+            _rigidbody.velocity = new Vector2 (speed * Input.GetAxisRaw("Horizontal"), _rigidbody.velocity.y);
+            _rigidbody.AddForce(new Vector2(Input.GetAxisRaw("Horizontal"), 0) * speed, ForceMode2D.Force);
+            var ray = Physics2D.Raycast(transform.position, Vector2.down, raydistance, 3);
         }
+
         private void Jump()
         {
-            _rigidbody.velocity = Vector2.zero;
+            //if (!_onGround) return;
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
             _rigidbody.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }
     }
