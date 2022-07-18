@@ -254,9 +254,9 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: bba1b3602a8981d4e88c9b8e03fbd580, type: 2}
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!114 &252560482
 MonoBehaviour:
@@ -394,7 +394,6 @@ GameObject:
   m_Component:
   - component: {fileID: 423627127}
   - component: {fileID: 423627128}
-  - component: {fileID: 423627129}
   m_Layer: 0
   m_Name: GroundChecker
   m_TagString: Untagged
@@ -443,19 +442,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.69859344, y: 0.104408264}
   m_EdgeRadius: 0
---- !u!114 &423627129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 423627126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e600fe7dfa4c23e4694a96eb97cdcc42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnGround: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

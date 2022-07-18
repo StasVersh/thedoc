@@ -11,13 +11,10 @@ namespace ProjectAssets.Resources.Doc.Scripts
         [SerializeField] private float jumpPower;
         [SerializeField] private float raydistance;
         private Rigidbody2D _rigidbody;
-        private GroundCheckController _groundChecker;
-        private bool _onGround;
 
         private void Start()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
-            _groundChecker = transform.Find("GroundChecker").GetComponent<GroundCheckController>();
         }
 
         private void Update()
@@ -34,7 +31,6 @@ namespace ProjectAssets.Resources.Doc.Scripts
 
         private void Jump()
         {
-            //if (!_onGround) return;
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
             _rigidbody.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }
