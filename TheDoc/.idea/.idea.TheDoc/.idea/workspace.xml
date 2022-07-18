@@ -11,7 +11,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/Controllers/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -76,7 +76,7 @@
       <updated>1657925036467</updated>
       <workItem from="1657925051376" duration="1766000" />
       <workItem from="1657992749334" duration="6485000" />
-      <workItem from="1658178454233" duration="700000" />
+      <workItem from="1658178454233" duration="6115000" />
     </task>
     <servers />
   </component>
