@@ -2,6 +2,7 @@ using System;
 using ProjectAssets.Resources.Doc.Scripts.States;
 using ProjectAssets.Resources.Doc.Scripts.Values;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace ProjectAssets.Resources.Doc.Scripts.Controllers
 {
@@ -10,14 +11,9 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
     {
         #region Variables
 
-        [SerializeField] private float speed;
-        [SerializeField] private float jumpSpeed;
-        
-        public IdleState IdleState;
-        public RunningState RunningState;
-        public JumpingState JumpingState;
+        [SerializeField] private float _speed;
+        [SerializeField] private float _jumpSpeed;
 
-        public bool _isGround;
         private Rigidbody2D _rigidbody;
         private StateMachine _characterStateMachine;
 
@@ -25,24 +21,32 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
 
         #region Propertys
 
-        public float Speed => speed;
-        public float JumpSpeed => speed;
-        public bool IsGround => _isGround;
+        public float Speed => _speed;
+        public float JumpSpeed => _speed;
+        public float HorizontalDirection { get; set; }
+
+        public bool IsGround { get; private set; }
+        public bool IsFalling { get; private set; }
+        public BaseState BaseState { get; private set; }
+        public JumpState JumpState { get; private set; }
+        public FallState FallState { get; private set; }
+        public IdleState IdleState { get; private set; }
+        public RunState RunState { get; private set; }
 
         #endregion
 
         #region Methods
 
-        public void Run(float speedValue, float horizontalDirection)
+        public void Move(float speedValue)
         {
-            _rigidbody.velocity = new Vector2 (speedValue * horizontalDirection, _rigidbody.velocity.y);
-            _rigidbody.AddForce(new Vector2(horizontalDirection, 0) * speedValue, ForceMode2D.Force);
+            _rigidbody.velocity = new Vector2 (speedValue * HorizontalDirection, _rigidbody.velocity.y);
+            _rigidbody.AddForce(new Vector2(HorizontalDirection, 0) * speedValue, ForceMode2D.Force);
         }
 
         public void Jump(float speedValue)
         {
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
-            _rigidbody.AddForce(Vector2.up * speedValue, ForceMode2D.Impulse);
+            _rigidbody.AddForce(new Vector2(0, _jumpSpeed), ForceMode2D.Impulse);
         }
 
         #endregion
@@ -54,12 +58,14 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             _rigidbody = GetComponent<Rigidbody2D>();
             
             _characterStateMachine = new StateMachine();
-            
+
+            BaseState = new BaseState(_characterStateMachine, this);
+            JumpState = new JumpState(_characterStateMachine, this);
+            FallState = new FallState(_characterStateMachine, this);
             IdleState = new IdleState(_characterStateMachine, this);
-            RunningState = new RunningState(_characterStateMachine, this);
-            JumpingState = new JumpingState(_characterStateMachine, this);
+            RunState = new RunState(_characterStateMachine, this);
             
-            _characterStateMachine.Initialize(IdleState);
+            _characterStateMachine.Initialize(BaseState);
         }
 
         private void Update()
@@ -70,6 +76,12 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
 
         private void FixedUpdate()
         {
+            if (_rigidbody.velocity.y < 0) IsFalling = true;
+            else
+            {
+                IsFalling = false;
+            }
+            
             _characterStateMachine.CurrentState.PhysicsUpdate();
         }
 
@@ -77,7 +89,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         {
             if (col.CompareTag(Tags.Ground))
             {
-                _isGround = true;
+                IsGround = true;
             }
         }
 
@@ -85,10 +97,15 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         {
             if (other.CompareTag(Tags.Ground))
             {
-                _isGround = false;
+                IsGround = false;
             }
         }
 
         #endregion
+
+        public void Reset()
+        {
+            _rigidbody.velocity = Vector2.zero;
+        }
     }
 }

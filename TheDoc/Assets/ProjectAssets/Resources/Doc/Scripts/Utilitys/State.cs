@@ -1,4 +1,5 @@
-﻿using Unity.VisualScripting;
+﻿using ProjectAssets.Resources.Doc.Scripts.Utilitys;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace ProjectAssets.Resources.Doc.Scripts.Controllers
@@ -31,12 +32,18 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
 
         public virtual void PhysicsUpdate()
         {
-
+            
         }
 
         public virtual void Exit()
         {
 
+        }
+        
+        public void Debug(string log)
+        {
+            EventHandler.StateChanging.Invoke(log);
+            UnityEngine.Debug.Log(log);
         }
         
     }

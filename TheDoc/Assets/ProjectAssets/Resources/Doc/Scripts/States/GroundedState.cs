@@ -1,20 +1,26 @@
 ﻿using ProjectAssets.Resources.Doc.Scripts.Controllers;
+using ProjectAssets.Resources.Doc.Scripts.Utilitys;
 using UnityEngine;
 using CharacterController = ProjectAssets.Resources.Doc.Scripts.Controllers.CharacterController;
 
 namespace ProjectAssets.Resources.Doc.Scripts.States
 {
-    public abstract class GroundedState : State
+    public class GroundedState : State
     {
-        protected GroundedState(StateMachine stateMachine, CharacterController character) 
-            : base(stateMachine, character)
+        public GroundedState(StateMachine stateMachine, CharacterController character) : base(stateMachine, character)
         {
+            InputHandler.Jump.AddListener(Jump);
         }
-
+        
         public override void HandleInput()
         {
             base.HandleInput();
-            if(_character.IsGround && Input.GetKeyDown(KeyCode.Space)) _stateMachine.ChangeState(_character.JumpingState);
+            _character.HorizontalDirection = Input.GetAxisRaw("Horizontal");
+        }
+
+        private void Jump()
+        {
+            if(_character.IsGround) _stateMachine.ChangeState(_character.JumpState);
         }
     }
 }
