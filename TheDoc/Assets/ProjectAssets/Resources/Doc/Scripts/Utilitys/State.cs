@@ -1,8 +1,7 @@
-﻿using ProjectAssets.Resources.Doc.Scripts.Utilitys;
-using Unity.VisualScripting;
-using UnityEngine;
+﻿using CharacterController = ProjectAssets.Resources.Doc.Scripts.Controllers.CharacterController;
+using StateMachine = ProjectAssets.Resources.Doc.Scripts.Controllers.StateMachine;
 
-namespace ProjectAssets.Resources.Doc.Scripts.Controllers
+namespace ProjectAssets.Resources.Doc.Scripts.Utilitys
 {
     public abstract class State
     {

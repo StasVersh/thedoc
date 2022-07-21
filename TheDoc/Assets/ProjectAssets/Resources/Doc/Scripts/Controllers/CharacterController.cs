@@ -15,6 +15,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         [SerializeField] private float _jumpSpeed;
 
         private Rigidbody2D _rigidbody;
+        private SpriteRenderer _sprite;
         private StateMachine _characterStateMachine;
 
         #endregion
@@ -25,7 +26,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         public float JumpSpeed => _speed;
         public float HorizontalDirection { get; set; }
 
-        public bool IsGround { get; private set; }
+        public bool IsGround;// { get; private set; }
         public bool IsFalling { get; private set; }
         public BaseState BaseState { get; private set; }
         public JumpState JumpState { get; private set; }
@@ -40,6 +41,17 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         public void Move(float speedValue)
         {
             _rigidbody.velocity = new Vector2 (speedValue * HorizontalDirection, _rigidbody.velocity.y);
+            if (HorizontalDirection != 0.0f)
+            {
+                if (HorizontalDirection < 0)
+                {
+                    _sprite.flipX = true;
+                }
+                else
+                {
+                    _sprite.flipX = false;
+                }
+            }
             _rigidbody.AddForce(new Vector2(HorizontalDirection, 0) * speedValue, ForceMode2D.Force);
         }
 
@@ -47,6 +59,11 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         {
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
             _rigidbody.AddForce(new Vector2(0, _jumpSpeed), ForceMode2D.Impulse);
+        }
+        
+        public void Reset()
+        {
+            _rigidbody.velocity = Vector2.zero;
         }
 
         #endregion
@@ -56,6 +73,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         private void Start()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
+            _sprite = GetComponent<SpriteRenderer>();
             
             _characterStateMachine = new StateMachine();
 
@@ -102,10 +120,5 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         }
 
         #endregion
-
-        public void Reset()
-        {
-            _rigidbody.velocity = Vector2.zero;
-        }
     }
 }

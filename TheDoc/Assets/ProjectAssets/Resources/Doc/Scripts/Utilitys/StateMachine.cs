@@ -1,4 +1,6 @@
-﻿namespace ProjectAssets.Resources.Doc.Scripts.Controllers
+﻿using ProjectAssets.Resources.Doc.Scripts.Utilitys;
+
+namespace ProjectAssets.Resources.Doc.Scripts.Controllers
 {
     public class StateMachine
     {

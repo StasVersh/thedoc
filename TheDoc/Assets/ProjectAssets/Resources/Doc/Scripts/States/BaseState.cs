@@ -1,12 +1,12 @@
 ﻿using ProjectAssets.Resources.Doc.Scripts.Controllers;
 using ProjectAssets.Resources.Doc.Scripts.Utilitys;
 using Unity.VisualScripting;
-using State = ProjectAssets.Resources.Doc.Scripts.Controllers.State;
+using State = ProjectAssets.Resources.Doc.Scripts.Utilitys.State;
 using StateMachine = ProjectAssets.Resources.Doc.Scripts.Controllers.StateMachine;
 
 namespace ProjectAssets.Resources.Doc.Scripts.States
 {
-    public class BaseState : State
+    public class BaseState : Utilitys.State
     {
         public BaseState(StateMachine stateMachine, CharacterController character) : base(stateMachine, character)
         {
@@ -22,8 +22,8 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-            if(_character.IsGround) _stateMachine.ChangeState(_character.IdleState);
-            else _stateMachine.ChangeState(_character.FallState);
+            _stateMachine.ChangeState(_character.IdleState);
+            if(_character.IsFalling) _stateMachine.ChangeState(_character.FallState);
             
         }
     }
