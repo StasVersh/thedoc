@@ -1,13 +1,20 @@
+using System;
 using UnityEngine;
 
 namespace ProjectAssets.Resources.Doc.Scripts
 {
     public class CameraController : MonoBehaviour
     {
-        public Transform Target;
         public Vector3 Offset;
         public float Velocity;
         public float MinDistance;
+        public Transform Target;
+
+        private void Start()
+        {
+            Target = GameObject.FindWithTag("Player").transform;
+            transform.position = Target.position + Offset;
+        }
 
         // Update is called once per frame
         void LateUpdate() {

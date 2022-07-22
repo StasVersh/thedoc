@@ -1,4 +1,5 @@
 ﻿using ProjectAssets.Resources.Doc.Scripts.Controllers;
+using ProjectAssets.Resources.Doc.Scripts.Utilitys;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using CharacterController = ProjectAssets.Resources.Doc.Scripts.Controllers.CharacterController;
@@ -11,9 +12,15 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         {
         }
 
+        private void StopJump()
+        {
+             _character.StopJump();
+        }
+
         public override void Enter()
         {
             base.Enter();
+            InputHandler.StopJump.AddListener(StopJump);
             base.Debug("Jump");
             _character.Jump(_character.JumpSpeed);
         }
@@ -22,6 +29,12 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         {
             base.LogicUpdate();
             if(_character.IsFalling) _stateMachine.ChangeState(_character.FallState); 
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+            InputHandler.StopJump.RemoveListener(StopJump);
         }
     }
 }

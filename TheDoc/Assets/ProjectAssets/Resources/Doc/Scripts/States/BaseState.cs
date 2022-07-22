@@ -1,6 +1,7 @@
-﻿using ProjectAssets.Resources.Doc.Scripts.Controllers;
-using ProjectAssets.Resources.Doc.Scripts.Utilitys;
+﻿using ProjectAssets.Resources.Doc.Scripts.Utilitys;
 using Unity.VisualScripting;
+using UnityEngine;
+using CharacterController = ProjectAssets.Resources.Doc.Scripts.Controllers.CharacterController;
 using State = ProjectAssets.Resources.Doc.Scripts.Utilitys.State;
 using StateMachine = ProjectAssets.Resources.Doc.Scripts.Controllers.StateMachine;
 
@@ -16,15 +17,17 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         {
             base.Enter();
             base.Debug("Base");
-            _character.Reset();
+            if(Input.GetAxisRaw("Horizontal") == 0.0f) _character.Reset();
         }
 
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-            _stateMachine.ChangeState(_character.IdleState);
-            if(_character.IsFalling) _stateMachine.ChangeState(_character.FallState);
-            
+            if(_character.IsGround) _stateMachine.ChangeState(_character.IdleState);
+            else if(_character.IsFalling)
+            { 
+                _stateMachine.ChangeState(_character.FallState);
+            }
         }
     }
 }

@@ -15,6 +15,10 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             {
                 InputHandler.Jump.Invoke();
             }
+            if (Input.GetKeyUp(_jumpKeyCode))
+            {
+                InputHandler.StopJump.Invoke();
+            }
             InputHandler.Moving.Invoke(Input.GetAxisRaw("Horizontal"));
         }
     }

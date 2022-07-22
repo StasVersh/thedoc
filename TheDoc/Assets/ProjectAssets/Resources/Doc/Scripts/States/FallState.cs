@@ -19,7 +19,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-            if(_character.IsGround) _stateMachine.ChangeState(_character.BaseState);
+            if(_character.IsGround || !_character.IsFalling) _stateMachine.ChangeState(_character.BaseState);
         }
     }
 }

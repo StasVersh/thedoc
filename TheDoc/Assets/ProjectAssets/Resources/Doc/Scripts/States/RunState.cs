@@ -18,9 +18,13 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-            if (_character.HorizontalDirection == 0.0f || !_character.IsGround)
+            if (_character.HorizontalDirection == 0.0f)
             {
-                _stateMachine.ChangeState(_character.BaseState);
+                _stateMachine.ChangeState(_character.IdleState);
+            }
+            if (!_character.IsGround)
+            {
+                _stateMachine.ChangeState(_character.FallState);
             }
         }
 

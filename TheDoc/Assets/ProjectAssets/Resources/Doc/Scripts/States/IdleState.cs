@@ -1,4 +1,5 @@
 ﻿using ProjectAssets.Resources.Doc.Scripts.Controllers;
+using UnityEngine;
 using CharacterController = ProjectAssets.Resources.Doc.Scripts.Controllers.CharacterController;
 
 namespace ProjectAssets.Resources.Doc.Scripts.States
@@ -13,6 +14,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         {
             base.Enter();
             base.Debug("Idle");
+            if(Input.GetAxisRaw("Horizontal") == 0.0f) _character.Reset();
         }
 
         public override void LogicUpdate()

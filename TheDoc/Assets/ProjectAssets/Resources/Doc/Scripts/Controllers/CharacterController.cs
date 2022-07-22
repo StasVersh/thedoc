@@ -61,6 +61,11 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             _rigidbody.AddForce(new Vector2(0, _jumpSpeed), ForceMode2D.Impulse);
         }
         
+        public void StopJump()
+        {
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
+        }
+        
         public void Reset()
         {
             _rigidbody.velocity = Vector2.zero;
@@ -103,7 +108,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             _characterStateMachine.CurrentState.PhysicsUpdate();
         }
 
-        private void OnTriggerEnter2D(Collider2D col)
+        private void OnTriggerStay2D(Collider2D col)
         {
             if (col.CompareTag(Tags.Ground))
             {
