@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using ProjectAssets.Resources.Doc.Scripts.States;
 using ProjectAssets.Resources.Doc.Scripts.Values;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
 
         [SerializeField] private float _speed;
         [SerializeField] private float _jumpSpeed;
+        [SerializeField] private float _coyoteTime;
 
         private Rigidbody2D _rigidbody;
         private SpriteRenderer _sprite;
@@ -120,8 +122,13 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         {
             if (other.CompareTag(Tags.Ground))
             {
-                IsGround = false;
+                StartCoroutine(StartCoyoteTime());
             }
+        }
+        private IEnumerator StartCoyoteTime()
+        {
+            yield return new WaitForSeconds(_coyoteTime);
+            IsGround = false;
         }
 
         #endregion
