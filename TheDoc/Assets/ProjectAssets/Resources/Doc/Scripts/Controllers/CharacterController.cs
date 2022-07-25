@@ -7,7 +7,7 @@ using UnityEngine.Serialization;
 
 namespace ProjectAssets.Resources.Doc.Scripts.Controllers
 {
-    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(Rigidbody2D), typeof(SpriteRenderer), typeof(Animator))]
     public class CharacterController : MonoBehaviour
     {
         #region Variables
@@ -15,8 +15,11 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         [SerializeField] private float _speed;
         [SerializeField] private float _jumpSpeed;
         [SerializeField] private float _coyoteTime;
+        [SerializeField] private float _leftSide;
+        [SerializeField] private float _rightSide;
 
         private Rigidbody2D _rigidbody;
+        private Animator _animator;
         private SpriteRenderer _sprite;
         private StateMachine _characterStateMachine;
 
@@ -28,7 +31,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         public float JumpSpeed => _speed;
         public float HorizontalDirection { get; set; }
 
-        public bool IsGround;// { get; private set; }
+        public bool IsGround { get; private set; }
         public bool IsFalling { get; private set; }
         public BaseState BaseState { get; private set; }
         public JumpState JumpState { get; private set; }
@@ -72,6 +75,11 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         {
             _rigidbody.velocity = Vector2.zero;
         }
+        
+        public void SetAnimation(string name)
+        {
+            _animator.Play(name);
+        }
 
         #endregion
 
@@ -81,6 +89,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         {
             _rigidbody = GetComponent<Rigidbody2D>();
             _sprite = GetComponent<SpriteRenderer>();
+            _animator = GetComponent<Animator>();
             
             _characterStateMachine = new StateMachine();
 
@@ -96,6 +105,18 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         private void Update()
         {   
             _characterStateMachine.CurrentState.HandleInput();
+
+            var position = transform.position;
+            var rightHit = Physics2D.Raycast(position, Vector2.right * _rightSide);
+            var leftHit = Physics2D.Raycast(position, Vector2.left * _leftSide);
+            if ((rightHit.collider.CompareTag("Ground") || leftHit.collider.CompareTag("Ground")) && IsGround)
+            {
+                IsGround = false;
+            }
+            
+            Debug.DrawRay(position, Vector3.right * _rightSide, Color.magenta);
+            Debug.DrawRay(position, Vector3.left * _leftSide, Color.magenta);
+            
             _characterStateMachine.CurrentState.LogicUpdate();
         }
 

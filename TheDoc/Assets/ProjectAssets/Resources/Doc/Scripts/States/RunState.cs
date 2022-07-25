@@ -1,4 +1,5 @@
 ﻿using ProjectAssets.Resources.Doc.Scripts.Controllers;
+using ProjectAssets.Resources.Doc.Scripts.Values;
 using CharacterController = ProjectAssets.Resources.Doc.Scripts.Controllers.CharacterController;
 
 namespace ProjectAssets.Resources.Doc.Scripts.States
@@ -13,6 +14,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         {
             base.Enter();
             base.Debug("Run");
+            _character.SetAnimation(CharacterAnimations.Running);
         }
 
         public override void LogicUpdate()
@@ -32,6 +34,12 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         {
             base.PhysicsUpdate();
             _character.Move(_character.Speed);
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+            _character.SetAnimation(CharacterAnimations.Base);
         }
     }
 }
