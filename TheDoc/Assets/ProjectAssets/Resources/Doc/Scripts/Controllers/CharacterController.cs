@@ -15,8 +15,8 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         [SerializeField] private float _speed;
         [SerializeField] private float _jumpSpeed;
         [SerializeField] private float _coyoteTime;
-        [SerializeField] private float _leftSide;
-        [SerializeField] private float _rightSide;
+        [SerializeField] private Vector2 _rayPosition;
+        [SerializeField] private float _rayDistance;
 
         private Rigidbody2D _rigidbody;
         private Animator _animator;
@@ -107,27 +107,28 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             _characterStateMachine.CurrentState.HandleInput();
 
             var position = transform.position;
-            var rightHit = Physics2D.Raycast(position, Vector2.right * _rightSide);
-            var leftHit = Physics2D.Raycast(position, Vector2.left * _leftSide);
-            if ((rightHit.collider.CompareTag("Ground") || leftHit.collider.CompareTag("Ground")) && IsGround)
+            int layerMasc = LayerMask.GetMask("Ground");
+            var rightRay = 
+                Physics2D.Raycast(new Vector3(position.x + 0.51f, position.y - _rayPosition.y), Vector3.down * _rayDistance, layerMasc);
+            var leftRay = 
+                Physics2D.Raycast(new Vector3(position.x - 0.51f, position.y - _rayPosition.y), Vector3.down * _rayDistance, layerMasc);
+            
+            /*if(leftRay.collider == null || rightRay.collider == null)
             {
-                IsGround = false;
+                IsGround = true;
             }
-            
-            Debug.DrawRay(position, Vector3.right * _rightSide, Color.magenta);
-            Debug.DrawRay(position, Vector3.left * _leftSide, Color.magenta);
-            
+            else
+            {
+                StartCoroutine(StartCoyoteTime());
+            }*/
+
             _characterStateMachine.CurrentState.LogicUpdate();
         }
 
         private void FixedUpdate()
         {
-            if (_rigidbody.velocity.y < 0) IsFalling = true;
-            else
-            {
-                IsFalling = false;
-            }
-            
+            IsFalling = _rigidbody.velocity.y < 0;
+
             _characterStateMachine.CurrentState.PhysicsUpdate();
         }
 
@@ -150,6 +151,13 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         {
             yield return new WaitForSeconds(_coyoteTime);
             IsGround = false;
+        }
+
+        private void OnDrawGizmos()
+        {
+            var position = transform.position;
+            Gizmos.DrawRay(new Vector3(position.x + 0.51f, position.y), Vector3.down * _rayDistance);
+            Gizmos.DrawRay(new Vector3(position.x - 0.51f, position.y - _rayPosition.y), Vector3.down * _rayDistance);
         }
 
         #endregion

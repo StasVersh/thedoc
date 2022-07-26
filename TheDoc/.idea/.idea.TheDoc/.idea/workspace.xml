@@ -11,6 +11,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b2c530e619ab42aeba489c5671c8267115d000/4b/f74a3714/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/Controllers/DocSpawnPointController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -95,7 +96,9 @@
       <workItem from="1658595175884" duration="2000" />
       <workItem from="1658603786047" duration="4683000" />
       <workItem from="1658682549604" duration="2121000" />
-      <workItem from="1658768821071" duration="3888000" />
+      <workItem from="1658768821071" duration="7814000" />
+      <workItem from="1658835865518" duration="3980000" />
+      <workItem from="1658868669810" duration="2842000" />
     </task>
     <servers />
   </component>

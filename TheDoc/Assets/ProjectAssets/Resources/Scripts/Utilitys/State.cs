@@ -42,7 +42,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Utilitys
         public void Debug(string log)
         {
             EventHandler.StateChanging.Invoke(log);
-            UnityEngine.Debug.Log(log);
+            //UnityEngine.Debug.Log(log);
         }
         
     }
