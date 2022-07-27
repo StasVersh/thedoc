@@ -1,5 +1,6 @@
 ﻿using ProjectAssets.Resources.Doc.Scripts.Controllers;
 using ProjectAssets.Resources.Doc.Scripts.Utilitys;
+using ProjectAssets.Resources.Doc.Scripts.Values;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using CharacterController = ProjectAssets.Resources.Doc.Scripts.Controllers.CharacterController;
@@ -20,6 +21,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         public override void Enter()
         {
             base.Enter();
+            _character.SetAnimation(CharacterAnimations.Jumping);
             InputHandler.StopJump.AddListener(StopJump);
             base.Debug("Jump");
             _character.Jump(_character.JumpSpeed);
@@ -34,6 +36,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         public override void Exit()
         {
             base.Exit();
+            _character.SetAnimation(CharacterAnimations.Base);
             InputHandler.StopJump.RemoveListener(StopJump);
         }
     }
