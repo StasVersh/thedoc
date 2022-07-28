@@ -15,8 +15,8 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         [SerializeField] private float _speed;
         [SerializeField] private float _jumpSpeed;
         [SerializeField] private float _coyoteTime;
-        [SerializeField] private float _wallRayDistance;
-        [SerializeField] private Vector2 _wallRayStart;
+        [SerializeField] private Vector2 _rayPosition;
+        [SerializeField] private float _rayDistance;
 
         private Rigidbody2D _rigidbody;
         private Animator _animator;
@@ -32,7 +32,6 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         public float HorizontalDirection { get; set; }
 
         public bool IsGround { get; private set; }
-        public bool IsWall;// { get; private set; }
         public bool IsFalling { get; private set; }
         public BaseState BaseState { get; private set; }
         public JumpState JumpState { get; private set; }
@@ -107,15 +106,21 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         {   
             _characterStateMachine.CurrentState.HandleInput();
 
-            int layer = LayerMask.GetMask("Ground");
-            var position = new Vector3(transform.position.x + _wallRayStart.x, transform.position.y + _wallRayStart.y);
-            Debug.DrawRay(position, Vector3.left * _wallRayDistance, Color.red);
-            Debug.DrawRay(position, Vector3.right * _wallRayDistance, Color.red);
-
-            var rightRay = Physics2D.Raycast(position, Vector2.right, _wallRayDistance, layer);
-            var leftRay = Physics2D.Raycast(position, Vector2.left, _wallRayDistance, layer);
+            var position = transform.position;
+            int layerMasc = LayerMask.GetMask("Ground");
+            var rightRay = 
+                Physics2D.Raycast(new Vector3(position.x + 0.51f, position.y - _rayPosition.y), Vector3.down * _rayDistance, layerMasc);
+            var leftRay = 
+                Physics2D.Raycast(new Vector3(position.x - 0.51f, position.y - _rayPosition.y), Vector3.down * _rayDistance, layerMasc);
             
-            IsWall = rightRay.collider != null || leftRay.collider != null;
+            /*if(leftRay.collider == null || rightRay.collider == null)
+            {
+                IsGround = true;
+            }
+            else
+            {
+                StartCoroutine(StartCoyoteTime());
+            }*/
 
             _characterStateMachine.CurrentState.LogicUpdate();
         }
@@ -146,6 +151,13 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         {
             yield return new WaitForSeconds(_coyoteTime);
             IsGround = false;
+        }
+
+        private void OnDrawGizmos()
+        {
+            var position = transform.position;
+            Gizmos.DrawRay(new Vector3(position.x + 0.51f, position.y), Vector3.down * _rayDistance);
+            Gizmos.DrawRay(new Vector3(position.x - 0.51f, position.y - _rayPosition.y), Vector3.down * _rayDistance);
         }
 
         #endregion

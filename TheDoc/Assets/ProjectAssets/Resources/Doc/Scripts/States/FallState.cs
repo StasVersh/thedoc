@@ -1,4 +1,5 @@
 ﻿using ProjectAssets.Resources.Doc.Scripts.Controllers;
+using ProjectAssets.Resources.Doc.Scripts.Values;
 using UnityEngine;
 using CharacterController = ProjectAssets.Resources.Doc.Scripts.Controllers.CharacterController;
 
@@ -13,6 +14,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         public override void Enter()
         {
             base.Enter();
+            _character.SetAnimation(CharacterAnimations.Falling);
             base.Debug("Fall");
         }
 
@@ -21,5 +23,13 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
             base.LogicUpdate();
             if(_character.IsGround || !_character.IsFalling) _stateMachine.ChangeState(_character.BaseState);
         }
+        
+        public override void Exit()
+        {
+            base.Exit();
+            _character.SetAnimation(CharacterAnimations.Falling);
+
+        }
     }
+    
 }

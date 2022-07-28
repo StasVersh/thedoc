@@ -28,11 +28,6 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
             {
                 _stateMachine.ChangeState(_character.FallState);
             }
-
-            if (_character.IsWall)
-            {
-                _stateMachine.ChangeState(_character.IdleState);
-            }
         }
 
         public override void PhysicsUpdate()
