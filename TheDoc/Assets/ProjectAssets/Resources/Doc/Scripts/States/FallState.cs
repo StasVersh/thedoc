@@ -1,4 +1,5 @@
 ﻿using ProjectAssets.Resources.Doc.Scripts.Controllers;
+using ProjectAssets.Resources.Doc.Scripts.Utilitys;
 using ProjectAssets.Resources.Doc.Scripts.Values;
 using UnityEngine;
 using CharacterController = ProjectAssets.Resources.Doc.Scripts.Controllers.CharacterController;
@@ -15,6 +16,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         {
             base.Enter();
             _character.SetAnimation(CharacterAnimations.Falling);
+            InputHandler.Jump.AddListener(Jump);
             base.Debug("Fall");
         }
 
@@ -29,6 +31,15 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
             base.Exit();
             _character.SetAnimation(CharacterAnimations.Falling);
 
+        }
+        
+        private void Jump()
+        {
+            if (_character.CanDoubleJump)
+            {
+                _character.Jump(_character.JumpSpeed);
+                _character.CanDoubleJump = false;
+            }
         }
     }
     

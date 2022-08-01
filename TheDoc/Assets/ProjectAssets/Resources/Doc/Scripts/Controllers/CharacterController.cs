@@ -33,6 +33,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
 
         public bool IsGround { get; private set; }
         public bool IsFalling { get; private set; }
+        public bool CanDoubleJump = true;
         public BaseState BaseState { get; private set; }
         public JumpState JumpState { get; private set; }
         public FallState FallState { get; private set; }
@@ -112,15 +113,6 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
                 Physics2D.Raycast(new Vector3(position.x + 0.51f, position.y - _rayPosition.y), Vector3.down * _rayDistance, layerMasc);
             var leftRay = 
                 Physics2D.Raycast(new Vector3(position.x - 0.51f, position.y - _rayPosition.y), Vector3.down * _rayDistance, layerMasc);
-            
-            /*if(leftRay.collider == null || rightRay.collider == null)
-            {
-                IsGround = true;
-            }
-            else
-            {
-                StartCoroutine(StartCoyoteTime());
-            }*/
 
             _characterStateMachine.CurrentState.LogicUpdate();
         }
@@ -136,6 +128,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         {
             if (col.CompareTag(Tags.Ground))
             {
+                CanDoubleJump = true;
                 IsGround = true;
             }
         }

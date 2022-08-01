@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72ae7df9-ef79-4899-9b5d-b03cba5dcb82" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TheDoc/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TheDoc/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="72ae7df9-ef79-4899-9b5d-b03cba5dcb82" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/46b1c576a7c04d02b267d8bd8ce3cc5d15d200/45/024e8aab/UnityEvent`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/Controllers/DocSpawnPointController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -36,7 +33,6 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "rider.run.widget.enabled.cache": "false",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
@@ -51,7 +47,7 @@
       <method v="2" />
     </configuration>
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="E:\2022.1.10f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.1.10f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\micro\Documents\GitHub\thedoc\TheDoc -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\micro\Documents\GitHub\thedoc\TheDoc" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -103,6 +99,7 @@
       <workItem from="1658835865518" duration="3980000" />
       <workItem from="1658868669810" duration="2842000" />
       <workItem from="1658950343593" duration="586000" />
+      <workItem from="1659019811922" duration="591000" />
     </task>
     <servers />
   </component>
