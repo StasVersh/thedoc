@@ -63,6 +63,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
 
         public void Jump(float speedValue)
         {
+            if(_rigidbody == null) return;
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
             _rigidbody.AddForce(new Vector2(0, _jumpSpeed), ForceMode2D.Impulse);
         }
