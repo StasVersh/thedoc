@@ -23,7 +23,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-            if(_character.IsGround) _stateMachine.ChangeState(_character.IdleState);
+            if(_character.CanJump) _stateMachine.ChangeState(_character.IdleState);
             else if(_character.IsFalling)
             { 
                 _stateMachine.ChangeState(_character.FallState);

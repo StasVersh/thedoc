@@ -16,14 +16,13 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         {
             base.Enter();
             _character.SetAnimation(CharacterAnimations.Falling);
-            InputHandler.Jump.AddListener(Jump);
             base.Debug("Fall");
         }
 
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-            if(_character.IsGround || !_character.IsFalling) _stateMachine.ChangeState(_character.BaseState);
+            if(_character.CanJump || !_character.IsFalling) _stateMachine.ChangeState(_character.BaseState);
         }
         
         public override void Exit()
@@ -31,15 +30,6 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
             base.Exit();
             _character.SetAnimation(CharacterAnimations.Falling);
 
-        }
-        
-        private void Jump()
-        {
-            if (_character.CanDoubleJump)
-            {
-                _character.Jump(_character.JumpSpeed);
-                _character.CanDoubleJump = false;
-            }
         }
     }
     

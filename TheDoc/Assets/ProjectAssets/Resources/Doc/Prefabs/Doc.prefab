@@ -127,8 +127,10 @@ MonoBehaviour:
   _speed: 10
   _jumpSpeed: 26
   _coyoteTime: 0.07
-  _rayPosition: {x: 0.51, y: 0}
-  _rayDistance: 0.03
+  _wallRayPosition: 0.05
+  _wallRayDistance: 0.5
+  _groundRayPosition: 0.2
+  _groundRayDistance: 0.22
 --- !u!61 &6724470802362079783
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -142,7 +144,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0054228753, y: 0.03155756}
+  m_Offset: {x: -0.00542289, y: 0.009277038}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.03}
@@ -153,7 +155,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7972727, y: 0.11025047}
+  m_Size: {x: 0.7, y: 0.065}
   m_EdgeRadius: 0
 --- !u!70 &7225393154301964203
 CapsuleCollider2D:
@@ -162,7 +164,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6724470802362079769}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -200,7 +202,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0045189857, y: 0.5211787}
+  m_Offset: {x: -0.0054124594, y: 1.3142431}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.03}
@@ -211,7 +213,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.96513027}
+  m_Size: {x: 0.7, y: 2.551259}
   m_EdgeRadius: 0
 --- !u!95 &-395972495808569948
 Animator:

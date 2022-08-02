@@ -15,13 +15,16 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         [SerializeField] private float _speed;
         [SerializeField] private float _jumpSpeed;
         [SerializeField] private float _coyoteTime;
-        [SerializeField] private Vector2 _rayPosition;
-        [SerializeField] private float _rayDistance;
+        [SerializeField] private float _wallRayPosition;
+        [SerializeField] private float _wallRayDistance;
+        [SerializeField] private float _groundRayPosition;
+        [SerializeField] private float _groundRayDistance;
 
         private Rigidbody2D _rigidbody;
         private Animator _animator;
         private SpriteRenderer _sprite;
         private StateMachine _characterStateMachine;
+        private bool _colliderGround;
 
         #endregion
 
@@ -29,11 +32,9 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
 
         public float Speed => _speed;
         public float JumpSpeed => _speed;
+        public bool CanJump => CheckCanJump();
         public float HorizontalDirection { get; set; }
-
-        public bool IsGround { get; private set; }
         public bool IsFalling { get; private set; }
-        public bool CanDoubleJump = true;
         public BaseState BaseState { get; private set; }
         public JumpState JumpState { get; private set; }
         public FallState FallState { get; private set; }
@@ -49,14 +50,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             _rigidbody.velocity = new Vector2 (speedValue * HorizontalDirection, _rigidbody.velocity.y);
             if (HorizontalDirection != 0.0f)
             {
-                if (HorizontalDirection < 0)
-                {
-                    _sprite.flipX = true;
-                }
-                else
-                {
-                    _sprite.flipX = false;
-                }
+                _sprite.flipX = HorizontalDirection < 0;
             }
             _rigidbody.AddForce(new Vector2(HorizontalDirection, 0) * speedValue, ForceMode2D.Force);
         }
@@ -81,6 +75,50 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         public void SetAnimation(string name)
         {
             _animator.Play(name);
+        }
+        
+        private bool CheckCanJump()
+        {
+            var position = transform.position;
+            int layerMasc = LayerMask.GetMask("Ground");
+            
+            var rightRay = Physics2D.Raycast(
+                new Vector2(position.x, position.y + _wallRayPosition), 
+                Vector2.right,
+                _wallRayDistance,
+                layerMasc);
+            var leftRay = Physics2D.Raycast(
+                new Vector2(position.x, position.y + _wallRayPosition), 
+                Vector2.left,
+                _wallRayDistance,
+                layerMasc);
+            var downRay = Physics2D.Raycast(
+                new Vector2(position.x, position.y + _groundRayPosition), 
+                Vector2.down,
+                _groundRayDistance,
+                layerMasc);
+            
+            var rightWall = rightRay.collider != null;
+            var leftWall = leftRay.collider != null;
+            var ground = downRay.collider != null;
+            
+            bool canJump;
+            if (ground == true && _colliderGround == true) canJump = true;
+            else if(!(rightWall || leftWall) && _colliderGround) canJump = true;
+            else if (ground) canJump = true;
+            else canJump = false;
+            return canJump;
+        }
+
+        private void DebugUpdate()
+        {
+            var position = transform.position;
+            Debug.DrawRay(new Vector2(position.x, position.y + _wallRayPosition), 
+                Vector2.right * _wallRayDistance, Color.magenta);
+            Debug.DrawRay(new Vector2(position.x, position.y + _wallRayPosition), 
+                Vector2.left * _wallRayDistance, Color.magenta);
+            Debug.DrawRay(new Vector2(position.x, position.y + _groundRayPosition), 
+                Vector2.down * _groundRayDistance, Color.magenta);
         }
 
         #endregion
@@ -108,13 +146,8 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         {   
             _characterStateMachine.CurrentState.HandleInput();
 
-            var position = transform.position;
-            int layerMasc = LayerMask.GetMask("Ground");
-            var rightRay = 
-                Physics2D.Raycast(new Vector3(position.x + 0.51f, position.y - _rayPosition.y), Vector3.down * _rayDistance, layerMasc);
-            var leftRay = 
-                Physics2D.Raycast(new Vector3(position.x - 0.51f, position.y - _rayPosition.y), Vector3.down * _rayDistance, layerMasc);
-
+            DebugUpdate();
+            
             _characterStateMachine.CurrentState.LogicUpdate();
         }
 
@@ -129,8 +162,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         {
             if (col.CompareTag(Tags.Ground))
             {
-                CanDoubleJump = true;
-                IsGround = true;
+                _colliderGround = true;
             }
         }
 
@@ -144,14 +176,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         private IEnumerator StartCoyoteTime()
         {
             yield return new WaitForSeconds(_coyoteTime);
-            IsGround = false;
-        }
-
-        private void OnDrawGizmos()
-        {
-            var position = transform.position;
-            Gizmos.DrawRay(new Vector3(position.x + 0.51f, position.y), Vector3.down * _rayDistance);
-            Gizmos.DrawRay(new Vector3(position.x - 0.51f, position.y - _rayPosition.y), Vector3.down * _rayDistance);
+            _colliderGround = false;
         }
 
         #endregion

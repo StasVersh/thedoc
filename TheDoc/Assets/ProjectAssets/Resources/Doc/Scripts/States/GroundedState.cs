@@ -31,7 +31,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
 
         private void Jump()     
         {
-            if(_character.IsGround) _stateMachine.ChangeState(_character.JumpState);
+            if(_character.CanJump) _stateMachine.ChangeState(_character.JumpState);
         }
     }
 }

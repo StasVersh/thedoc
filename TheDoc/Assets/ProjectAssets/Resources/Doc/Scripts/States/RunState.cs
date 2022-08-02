@@ -24,7 +24,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
             {
                 _stateMachine.ChangeState(_character.IdleState);
             }
-            if (!_character.IsGround)
+            if (!_character.CanJump)
             {
                 _stateMachine.ChangeState(_character.FallState);
             }
