@@ -12,13 +12,18 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
     {
         #region Variables
 
+        [Header("Movement")]
         [SerializeField] private float _speed;
         [SerializeField] private float _jumpSpeed;
         [SerializeField] private float _coyoteTime;
+        [Header("Collider checking")]
         [SerializeField] private float _wallRayPosition;
         [SerializeField] private float _wallRayDistance;
         [SerializeField] private float _groundRayPosition;
         [SerializeField] private float _groundRayDistance;
+        [Header("Particles")]
+        [SerializeField] private ParticleSystem _dustRunParticles;
+        [SerializeField] private ParticleSystem _dustFallParticles;
 
         private Rigidbody2D _rigidbody;
         private Animator _animator;
@@ -33,6 +38,8 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         public float Speed => _speed;
         public float JumpSpeed => _speed;
         public bool CanJump => CheckCanJump();
+        public ParticleSystem DustRunParticles => _dustRunParticles;
+        public ParticleSystem DustFallParticles => _dustFallParticles;
         public float HorizontalDirection { get; set; }
         public bool IsFalling { get; private set; }
         public BaseState BaseState { get; private set; }
@@ -48,9 +55,10 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         public void Move(float speedValue)
         {
             _rigidbody.velocity = new Vector2 (speedValue * HorizontalDirection, _rigidbody.velocity.y);
+            
             if (HorizontalDirection != 0.0f)
             {
-                _sprite.flipX = HorizontalDirection < 0;
+                transform.localScale = HorizontalDirection > 0 ? new Vector3(1, 1) : new Vector3(-1, 1);
             }
             _rigidbody.AddForce(new Vector2(HorizontalDirection, 0) * speedValue, ForceMode2D.Force);
         }
@@ -75,6 +83,13 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         public void SetAnimation(string name)
         {
             _animator.Play(name);
+        }
+
+        public void SetDefault()
+        {
+            _animator.Play(CharacterAnimations.Base);
+            _dustRunParticles.Stop();
+            _dustFallParticles.Stop();
         }
         
         private bool CheckCanJump()

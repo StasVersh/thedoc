@@ -15,6 +15,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
             base.Enter();
             base.Debug("Run");
             _character.SetAnimation(CharacterAnimations.Running);
+            _character.DustRunParticles.Play();
         }
 
         public override void LogicUpdate()
@@ -39,7 +40,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         public override void Exit()
         {
             base.Exit();
-            _character.SetAnimation(CharacterAnimations.Base);
+            _character.SetDefault();
         }
     }
 }

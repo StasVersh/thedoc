@@ -22,14 +22,17 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-            if(_character.CanJump || !_character.IsFalling) _stateMachine.ChangeState(_character.BaseState);
+            if (_character.CanJump || !_character.IsFalling)
+            {
+                _character.DustFallParticles.Play();
+                _stateMachine.ChangeState(_character.BaseState);
+            }
         }
         
         public override void Exit()
         {
             base.Exit();
-            _character.SetAnimation(CharacterAnimations.Falling);
-
+            _character.SetAnimation(CharacterAnimations.Base);
         }
     }
     

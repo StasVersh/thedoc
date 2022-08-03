@@ -31,7 +31,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         public override void Exit()
         {
             base.Exit();
-            _character.SetAnimation(CharacterAnimations.Base);
+            _character.SetDefault();
         }
     }
 }

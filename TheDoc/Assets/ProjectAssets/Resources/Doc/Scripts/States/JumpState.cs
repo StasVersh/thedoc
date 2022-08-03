@@ -1,8 +1,6 @@
 ﻿using ProjectAssets.Resources.Doc.Scripts.Controllers;
 using ProjectAssets.Resources.Doc.Scripts.Utilitys;
 using ProjectAssets.Resources.Doc.Scripts.Values;
-using UnityEngine;
-using UnityEngine.EventSystems;
 using CharacterController = ProjectAssets.Resources.Doc.Scripts.Controllers.CharacterController;
 
 namespace ProjectAssets.Resources.Doc.Scripts.States
@@ -36,8 +34,8 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         public override void Exit()
         {
             base.Exit();
-            _character.SetAnimation(CharacterAnimations.Base);
             InputHandler.StopJump.RemoveListener(StopJump);
+            _character.SetDefault();
         }
     }
 }
