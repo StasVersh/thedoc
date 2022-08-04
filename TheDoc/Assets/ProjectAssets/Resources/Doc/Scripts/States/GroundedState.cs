@@ -23,6 +23,12 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
             _character.HorizontalDirection = Input.GetAxisRaw("Horizontal");
         }
 
+        public override void LogicUpdate()
+        {
+            base.LogicUpdate();
+            //if(_character.IsFalling) _stateMachine.ChangeState(_character.FallState);
+        }
+
         public override void Exit()
         {
             base.Exit();

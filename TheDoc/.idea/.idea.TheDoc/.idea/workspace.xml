@@ -14,6 +14,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/da/e194a8bb/Single.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b2c530e619ab42aeba489c5671c8267115d000/4b/f74a3714/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/Controllers/DocSpawnPointController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/Controllers/WallDetectorController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ProjectAssets/Resources/Scripts/Controllers/TargetSetController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -107,6 +108,7 @@
       <workItem from="1659351314134" duration="5032000" />
       <workItem from="1659361445378" duration="4052000" />
       <workItem from="1659525566698" duration="4409000" />
+      <workItem from="1659573035370" duration="4221000" />
     </task>
     <servers />
   </component>

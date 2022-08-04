@@ -16,14 +16,20 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         [SerializeField] private float _speed;
         [SerializeField] private float _jumpSpeed;
         [SerializeField] private float _coyoteTime;
-        [Header("Collider checking")]
+
+        [Header("Collider checking")] 
         [SerializeField] private float _wallRayPosition;
         [SerializeField] private float _wallRayDistance;
         [SerializeField] private float _groundRayPosition;
         [SerializeField] private float _groundRayDistance;
+        [SerializeField] private WallDetectorController _wall;
         [Header("Particles")]
         [SerializeField] private ParticleSystem _dustRunParticles;
         [SerializeField] private ParticleSystem _dustFallParticles;
+        [Header("Debug")] 
+        public bool Jumping;
+        public bool JumpingRay;
+        public bool Wall;
 
         private Rigidbody2D _rigidbody;
         private Animator _animator;
@@ -37,6 +43,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
 
         public float Speed => _speed;
         public float JumpSpeed => _speed;
+        public bool GroundCollider => _colliderGround;
         public bool CanJump => CheckCanJump();
         public ParticleSystem DustRunParticles => _dustRunParticles;
         public ParticleSystem DustFallParticles => _dustFallParticles;
@@ -95,31 +102,19 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         private bool CheckCanJump()
         {
             var position = transform.position;
-            int layerMasc = LayerMask.GetMask("Ground");
+            var layerMasc = LayerMask.GetMask("Ground");
             
-            var rightRay = Physics2D.Raycast(
-                new Vector2(position.x, position.y + _wallRayPosition), 
-                Vector2.right,
-                _wallRayDistance,
-                layerMasc);
-            var leftRay = Physics2D.Raycast(
-                new Vector2(position.x, position.y + _wallRayPosition), 
-                Vector2.left,
-                _wallRayDistance,
-                layerMasc);
             var downRay = Physics2D.Raycast(
                 new Vector2(position.x, position.y + _groundRayPosition), 
                 Vector2.down,
                 _groundRayDistance,
                 layerMasc);
             
-            var rightWall = rightRay.collider != null;
-            var leftWall = leftRay.collider != null;
             var ground = downRay.collider != null;
             
             bool canJump;
             if (ground == true && _colliderGround == true) canJump = true;
-            else if(!(rightWall || leftWall) && _colliderGround) canJump = true;
+            else if(!_wall.Value && _colliderGround) canJump = true;
             else if (ground) canJump = true;
             else canJump = false;
             return canJump;
@@ -128,12 +123,22 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         private void DebugUpdate()
         {
             var position = transform.position;
-            Debug.DrawRay(new Vector2(position.x, position.y + _wallRayPosition), 
-                Vector2.right * _wallRayDistance, Color.magenta);
-            Debug.DrawRay(new Vector2(position.x, position.y + _wallRayPosition), 
-                Vector2.left * _wallRayDistance, Color.magenta);
             Debug.DrawRay(new Vector2(position.x, position.y + _groundRayPosition), 
                 Vector2.down * _groundRayDistance, Color.magenta);
+            
+            var layerMasc = LayerMask.GetMask("Ground");
+
+            var downRay = Physics2D.Raycast(
+                new Vector2(position.x, position.y + _groundRayPosition), 
+                Vector2.down,
+                _groundRayDistance,
+                layerMasc);
+            
+            var ground = downRay.collider != null;
+
+            JumpingRay = ground;
+            Jumping = _colliderGround;
+            Wall = _wall.Value;
         }
 
         #endregion
@@ -185,7 +190,8 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         {
             if (other.CompareTag(Tags.Ground))
             {
-                StartCoroutine(StartCoyoteTime());
+                if(!_wall.Value) StartCoroutine(StartCoyoteTime());
+                else _colliderGround = false;
             }
         }
         private IEnumerator StartCoyoteTime()
