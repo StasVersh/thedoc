@@ -11,6 +11,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Model
         public bool CanJump;
         public bool IsFalling;
         public float HorizontalDirection;
+        public InputMeneger Input;
         public ParticleSystem DustRunParticles;
         public ParticleSystem DustFallParticles;
         public PlayerController Controller;
@@ -20,6 +21,8 @@ namespace ProjectAssets.Resources.Doc.Scripts.Model
         public Player(GameObject gameObject)
         {
             GameObject = gameObject;
+            Input = new InputMeneger();
+            Input.Enable();
         }
     }
 }

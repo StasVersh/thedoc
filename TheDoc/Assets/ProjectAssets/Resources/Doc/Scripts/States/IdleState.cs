@@ -2,6 +2,7 @@
 using ProjectAssets.Resources.Doc.Scripts.Model;
 using ProjectAssets.Resources.Doc.Scripts.Values;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace ProjectAssets.Resources.Doc.Scripts.States
 {
@@ -15,15 +16,12 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         {
             base.Enter();
             _player.Controller.SetAnimation(CharacterAnimations.Idle);
+            _player.Input.PlayerInput.Movement.performed += MovementOnPerformed;
         }
 
-        public override void LogicUpdate()
+        private void MovementOnPerformed(InputAction.CallbackContext obj)
         {
-            base.LogicUpdate();
-            if (Input.GetAxisRaw("Horizontal") != 0)
-            {
-                _stateMachine.ChangeState(_player.States.RunningState);
-            }
+            _stateMachine.ChangeState(_player.States.RunningState);
         }
 
         public override void Exit()

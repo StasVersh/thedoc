@@ -19,7 +19,6 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
                 transform.localScale = direction > 0 ? new Vector3(1, 1) : new Vector3(-1, 1);
             }
             _rigidbody.velocity = new Vector2 (speedValue * direction, _rigidbody.velocity.y);
-            _rigidbody.AddForce(new Vector2(direction, 0) * speedValue, ForceMode2D.Force);
         }
         public void Jump(float speedValue)
         {

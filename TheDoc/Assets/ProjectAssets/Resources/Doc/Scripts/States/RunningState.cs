@@ -21,7 +21,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-            if (Input.GetAxis("Horizontal") == 0)
+            if (_direction == 0)
             {
                 _stateMachine.ChangeState(_player.States.IdleState);
             }

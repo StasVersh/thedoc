@@ -17,6 +17,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         private Rigidbody2D _rigidbody;
         private bool _canJump; 
         private bool _isFalling;
+        private Vector2 _velocity;
 
         private void Start()
         {
@@ -26,13 +27,15 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         private void Update()
         {
             LogicUpdate();
+
+            _velocity = _rigidbody.velocity;
             
             DataUpdate();
         }
 
-        private void FixedUpdate()
+        private void FixedUpdate()  
         {
-            _isFalling = _rigidbody.velocity.y < 0;
+            _isFalling = _velocity.y < 0;
         }
 
         private void DataUpdate()
