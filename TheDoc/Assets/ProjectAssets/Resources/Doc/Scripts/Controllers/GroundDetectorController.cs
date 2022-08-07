@@ -1,13 +1,11 @@
-using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace ProjectAssets.Resources.Doc.Scripts.Controllers
 {
-    public class WallDetectorController : MonoBehaviour
+    [RequireComponent(typeof(BoxCollider2D))]
+    public class GroundDetectorController : MonoBehaviour
     {
-        //[HideInInspector]
-        public bool Value;
-        
+        [HideInInspector] public bool Value;
         private void OnTriggerStay2D(Collider2D other)
         {
             if (other.CompareTag("Ground"))

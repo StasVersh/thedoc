@@ -1,10 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using ProjectAssets.Resources.Doc.Scripts.Utilitys;
 using UnityEngine;
-using Zenject;
 
-namespace ProjectAssets.Resources.Doc.Scripts.Controllers
+namespace ProjectAssets.Resources.Scripts.Controllers
 {
     public class InputController : MonoBehaviour
     {

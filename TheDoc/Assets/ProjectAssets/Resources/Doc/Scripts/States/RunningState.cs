@@ -5,24 +5,25 @@ using UnityEngine;
 
 namespace ProjectAssets.Resources.Doc.Scripts.States
 {
-    public class IdleState : UnmovableState
+    public class RunningState : MovableState
     {
-        public IdleState(StateMachine stateMachine, Player player) : base(stateMachine, player)
+        public RunningState(StateMachine stateMachine, Player player) : base(stateMachine, player)
         {
         }
 
         public override void Enter()
         {
             base.Enter();
-            _player.Controller.SetAnimation(CharacterAnimations.Idle);
+            _player.Controller.SetAnimation(CharacterAnimations.Running);
+            _player.DustRunParticles.Play();
         }
 
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-            if (Input.GetAxisRaw("Horizontal") != 0)
+            if (Input.GetAxis("Horizontal") == 0)
             {
-                _stateMachine.ChangeState(_player.States.RunningState);
+                _stateMachine.ChangeState(_player.States.IdleState);
             }
         }
 
@@ -30,6 +31,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         {
             base.Exit();
             _player.Controller.SetAnimation(CharacterAnimations.Base);
+            _player.DustRunParticles.Stop();
         }
     }
 }

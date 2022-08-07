@@ -1,14 +1,17 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Cinemachine;
+﻿using Cinemachine;
+using ProjectAssets.Resources.Doc.Scripts.Model;
 using UnityEngine;
+using Zenject;
 
-public class TargetSetController : MonoBehaviour
+namespace ProjectAssets.Resources.Scripts.Controllers
 {
-    private void Start()
+    public class TargetSetController : MonoBehaviour
     {
-        GetComponent<CinemachineVirtualCamera>().Follow = GameObject.FindWithTag("Player").transform;
-        GetComponent<CinemachineVirtualCamera>().LookAt = GameObject.FindWithTag("Player").transform;
+        [Inject] private Player _player;
+        private void Start()
+        {
+            GetComponent<CinemachineVirtualCamera>().Follow = _player.GameObject.transform;
+            GetComponent<CinemachineVirtualCamera>().LookAt = _player.GameObject.transform;
+        }
     }
 }
