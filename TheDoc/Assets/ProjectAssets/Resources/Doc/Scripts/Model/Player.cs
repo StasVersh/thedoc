@@ -8,9 +8,10 @@ namespace ProjectAssets.Resources.Doc.Scripts.Model
         public float Speed;
         public float JumpSpeed;
         public float CoyoteTime;
+        public float FallingStepValue;
         public bool CanJump;
         public bool IsFalling;
-        public float HorizontalDirection;
+        public bool CanCoyoteJump;
         public InputMeneger Input;
         public ParticleSystem DustRunParticles;
         public ParticleSystem DustFallParticles;

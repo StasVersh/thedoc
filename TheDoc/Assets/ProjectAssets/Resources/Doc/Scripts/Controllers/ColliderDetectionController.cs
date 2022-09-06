@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using ProjectAssets.Resources.Doc.Scripts.Model;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Zenject;
 
 namespace ProjectAssets.Resources.Doc.Scripts.Controllers
@@ -17,25 +18,32 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         private Rigidbody2D _rigidbody;
         private bool _canJump; 
         private bool _isFalling;
-        private Vector2 _velocity;
+        private float _lastY;
 
         private void Start()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
+            _lastY = gameObject.transform.position.y;
+            _player.Input.PlayerInput.Jump.started += JumpOnStarted;
         }
 
         private void Update()
         {
             LogicUpdate();
-
-            _velocity = _rigidbody.velocity;
             
             DataUpdate();
         }
 
         private void FixedUpdate()  
         {
-            _isFalling = _velocity.y < 0;
+            var position = gameObject.transform.position;
+            _isFalling = position.y < _lastY && Math.Abs(position.y - _lastY) > _player.FallingStepValue;
+            _lastY = position.y;
+        }
+
+        private void OnDisable()
+        {
+            _player.Input.PlayerInput.Jump.started -= JumpOnStarted;
         }
 
         private void DataUpdate()
@@ -63,11 +71,23 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
                 StartCoroutine(StartCoyoteTime());
             }
         }
+
+        private void JumpOnStarted(InputAction.CallbackContext obj)
+        {
+            _player.CanCoyoteJump = true;
+            StartCoroutine(StartJumpCoyoteTime());
+        }
         
         private IEnumerator StartCoyoteTime()
         {
             yield return new WaitForSeconds(_player.CoyoteTime);
             _canJump = false;
+        }
+        
+        private IEnumerator StartJumpCoyoteTime()
+        {
+            yield return new WaitForSeconds(_player.CoyoteTime);
+            _player.CanCoyoteJump = false;
         }
     }
 }

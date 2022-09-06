@@ -1,4 +1,5 @@
-﻿using ProjectAssets.Resources.Doc.Scripts.Model;
+﻿using ProjectAssets.Resources.Doc.Scripts.Installers;
+using ProjectAssets.Resources.Doc.Scripts.Model;
 using TMPro;
 using UnityEngine;
 using Zenject;

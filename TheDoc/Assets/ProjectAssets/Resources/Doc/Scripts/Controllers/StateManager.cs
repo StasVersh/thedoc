@@ -15,6 +15,8 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         public FallingState FallingState { get; private set; }
         public IdleState IdleState { get; private set; }
         public RunningState RunningState { get; private set; }
+        public JumpingState JumpingState { get; private set; }
+        public GroundedBaseState GroundedBaseState { get; private set; }
 
         private void OnEnable()
         {
@@ -28,6 +30,8 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             FallingState = new FallingState(_stateMachine, _player);
             IdleState = new IdleState(_stateMachine, _player);
             RunningState = new RunningState(_stateMachine, _player);
+            JumpingState = new JumpingState(_stateMachine, _player);
+            GroundedBaseState = new GroundedBaseState(_stateMachine, _player);
 
             _stateMachine.Initialize(FallingState);
         }

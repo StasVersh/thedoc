@@ -12,6 +12,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         [SerializeField] private float _speed;
         [SerializeField] private float _jumpSpeed;
         [SerializeField] private float _coyoteTime;
+        [SerializeField] private float _fallingStepValue;
         [SerializeField] private PlayerInput _input;
         [Header("Particles")] 
         [SerializeField] private ParticleSystem _dustRunParticles;
@@ -21,16 +22,22 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
 
         private void OnEnable()
         {
+            UpdateData();
+        }
+
+        private void Update()
+        {
+            UpdateData();
+        }
+
+        private void UpdateData()
+        {
             _player.Speed = _speed;
             _player.JumpSpeed = _jumpSpeed;
             _player.CoyoteTime = _coyoteTime;
+            _player.FallingStepValue = _fallingStepValue;
             _player.DustRunParticles = _dustRunParticles;
             _player.DustFallParticles = _dustFallParticles;
-        }
-
-        private void Start()
-        {
-            
         }
     }
 }

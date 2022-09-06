@@ -1,5 +1,6 @@
 using ProjectAssets.Resources.Doc.Scripts.Model;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Zenject;
 
 namespace ProjectAssets.Resources.Doc.Scripts.Controllers
@@ -38,11 +39,11 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         {
             _animator.Play(animationName);
         }
-
         private void OnEnable()
         {
             _player.Controller = this;
         }
+
         private void Start()
         {
             _rigidbody = GetComponent<Rigidbody2D>();

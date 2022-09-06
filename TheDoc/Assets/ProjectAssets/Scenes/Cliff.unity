@@ -144002,13 +144002,21 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5737259664528957648, guid: a62212e07817df64c864508d52eeaa5c, type: 3}
+      propertyPath: field of view
+      value: 75
+      objectReference: {fileID: 0}
     - target: {fileID: 5737259664528957649, guid: a62212e07817df64c864508d52eeaa5c, type: 3}
       propertyPath: m_RendererIndex
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5737259664816990399, guid: a62212e07817df64c864508d52eeaa5c, type: 3}
+      propertyPath: m_Lens.FieldOfView
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5737259664816990399, guid: a62212e07817df64c864508d52eeaa5c, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.8614917
+      value: 1.3280346
       objectReference: {fileID: 0}
     - target: {fileID: 5737259665405832489, guid: a62212e07817df64c864508d52eeaa5c, type: 3}
       propertyPath: m_RootOrder

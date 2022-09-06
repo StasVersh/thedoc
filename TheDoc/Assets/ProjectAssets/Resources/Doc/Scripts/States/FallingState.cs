@@ -14,7 +14,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         public override void Enter()
         {
             base.Enter();
-            _player.Controller.SetAnimation(CharacterAnimations.Falling);
+            _player.Controller.SetAnimation(PlayerAnimations.Falling);
         }
 
         public override void LogicUpdate()
@@ -35,7 +35,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         {
             base.Exit();
             _player.DustFallParticles.Play();
-            _player.Controller.SetAnimation(CharacterAnimations.Base);
+            _player.Controller.SetAnimation(PlayerAnimations.Base);
         }
     }
 }
