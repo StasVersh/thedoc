@@ -1,17 +1,15 @@
-﻿using CharacterController = ProjectAssets.Resources.Doc.Scripts.Controllers.CharacterController;
+﻿using ProjectAssets.Resources.Doc.Scripts.Utilitys;
 using StateMachine = ProjectAssets.Resources.Doc.Scripts.Controllers.StateMachine;
 
-namespace ProjectAssets.Resources.Doc.Scripts.Utilitys
+namespace ProjectAssets.Resources.Scripts.Utilitys
 {
     public abstract class State
     {
         protected StateMachine _stateMachine;
-        protected CharacterController _character;
 
-        public State(StateMachine stateMachine, CharacterController character)
+        public State(StateMachine stateMachine)
         {
             _stateMachine = stateMachine;
-            _character = character;
         }
         
         public virtual void Enter()
@@ -42,7 +40,6 @@ namespace ProjectAssets.Resources.Doc.Scripts.Utilitys
         public void Debug(string log)
         {
             EventHandler.StateChanging.Invoke(log);
-            //UnityEngine.Debug.Log(log);
         }
         
     }
