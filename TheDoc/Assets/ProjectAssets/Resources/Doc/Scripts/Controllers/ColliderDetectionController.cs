@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
 using ProjectAssets.Resources.Doc.Scripts.Model;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using Zenject;
 
 namespace ProjectAssets.Resources.Doc.Scripts.Controllers
@@ -15,16 +13,13 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         [SerializeField] private GroundDetectorController _groundDetector;
         [SerializeField] private GroundDetectorController _groundCheck;
         
-        private Rigidbody2D _rigidbody;
         private bool _canJump; 
         private bool _isFalling;
         private float _lastY;
 
         private void Start()
         {
-            _rigidbody = GetComponent<Rigidbody2D>();
             _lastY = gameObject.transform.position.y;
-            _player.Input.PlayerInput.Jump.started += JumpOnStarted;
         }
 
         private void Update()
@@ -39,11 +34,6 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             var position = gameObject.transform.position;
             _isFalling = position.y < _lastY && Math.Abs(position.y - _lastY) > _player.FallingStepValue;
             _lastY = position.y;
-        }
-
-        private void OnDisable()
-        {
-            _player.Input.PlayerInput.Jump.started -= JumpOnStarted;
         }
 
         private void DataUpdate()
@@ -68,26 +58,8 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             }
             else
             {
-                StartCoroutine(StartCoyoteTime());
+                _canJump = false;
             }
-        }
-
-        private void JumpOnStarted(InputAction.CallbackContext obj)
-        {
-            _player.CanCoyoteJump = true;
-            StartCoroutine(StartJumpCoyoteTime());
-        }
-        
-        private IEnumerator StartCoyoteTime()
-        {
-            yield return new WaitForSeconds(_player.CoyoteTime);
-            _canJump = false;
-        }
-        
-        private IEnumerator StartJumpCoyoteTime()
-        {
-            yield return new WaitForSeconds(_player.CoyoteTime);
-            _player.CanCoyoteJump = false;
         }
     }
 }

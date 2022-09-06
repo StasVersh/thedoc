@@ -1,6 +1,5 @@
 ﻿using ProjectAssets.Resources.Doc.Scripts.Model;
 using ProjectAssets.Resources.Doc.Scripts.Values;
-using UnityEngine;
 using StateMachine = ProjectAssets.Resources.Doc.Scripts.Controllers.StateMachine;
 
 namespace ProjectAssets.Resources.Doc.Scripts.States
@@ -21,14 +20,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         {
             base.LogicUpdate();
             if (!_player.CanJump) return;
-            if (Input.GetAxisRaw("Horizontal") == 0)
-            {
-                _stateMachine.ChangeState(_player.States.IdleState);
-            }
-            else
-            {
-                _stateMachine.ChangeState(_player.States.RunningState);
-            }
+            _stateMachine.ChangeState(_player.States.GroundedBaseState);
         }
 
         public override void Exit()

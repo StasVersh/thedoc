@@ -5132,7 +5132,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -9741,7 +9741,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00501005, y: 0.022894893}
+  m_Offset: {x: -0.00501005, y: 0.009829521}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -9752,7 +9752,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.036065258, y: 0.07035916}
+  m_Size: {x: 0.036065258, y: 0.1}
   m_EdgeRadius: 0
 --- !u!114 &7203117615493510768
 MonoBehaviour:
@@ -9875,7 +9875,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.07
+  m_AngularDrag: 0
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: bba1b3602a8981d4e88c9b8e03fbd580, type: 2}
   m_Interpolate: 1
@@ -9942,9 +9942,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 10
   _jumpSpeed: 26
-  _coyoteTime: 0.07
   _fallingStepValue: 0.05
-  _input: {fileID: -337732146253487346}
   _dustRunParticles: {fileID: 9095986743159430381}
   _dustFallParticles: {fileID: 6022471430261461116}
 --- !u!114 &7489802075148125055
@@ -10070,7 +10068,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.004741192, y: 0.022196844}
+  m_Offset: {x: -0.004741192, y: 0.009131473}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -10081,7 +10079,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7, y: 0.06967893}
+  m_Size: {x: 0.7, y: 0.1}
   m_EdgeRadius: 0
 --- !u!114 &3930294784040855396
 MonoBehaviour:
