@@ -19,7 +19,9 @@ namespace ProjectAssets.Resources.Scripts.Controllers
 
         private void Update()
         {
-            _text.text = _player.IsFalling.ToString();
+            var fullState = _player.States._stateMachine.CurrentState.ToString();
+            var lenght = fullState.Length - 1;
+            _text.text = fullState;
         }
     }
 }
