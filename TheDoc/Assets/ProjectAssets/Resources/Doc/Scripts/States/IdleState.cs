@@ -1,6 +1,8 @@
-﻿using ProjectAssets.Resources.Doc.Scripts.Controllers;
+﻿using System.Collections;
+using ProjectAssets.Resources.Doc.Scripts.Controllers;
 using ProjectAssets.Resources.Doc.Scripts.Model;
 using ProjectAssets.Resources.Doc.Scripts.Values;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace ProjectAssets.Resources.Doc.Scripts.States
@@ -17,6 +19,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
             _player.Controller.SetAnimation(PlayerAnimations.Idle);
             _player.Input.PlayerInput.Movement.performed += MovementOnPerformed;
             _player.Input.PlayerInput.Jump.started += JumpOnStarted;
+            _player.SteamController.StartSteam();
         }
 
         public override void Exit()
@@ -25,6 +28,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
             _player.Input.PlayerInput.Movement.performed -= MovementOnPerformed;
             _player.Input.PlayerInput.Jump.started -= JumpOnStarted;
             _player.Controller.SetAnimation(PlayerAnimations.Base);
+            _player.SteamController.StopSteam();
         }
         
         private void JumpOnStarted(InputAction.CallbackContext obj)

@@ -10,7 +10,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
     {
         [Inject] private Player _player;
         
-        private StateMachine _stateMachine;
+        public StateMachine _stateMachine;
 
         public FallingState FallingState { get; private set; }
         public IdleState IdleState { get; private set; }

@@ -13,6 +13,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Model
         public InputMeneger Input;
         public ParticleSystem DustRunParticles;
         public ParticleSystem DustFallParticles;
+        public PlayerSteamController SteamController;
         public PlayerController Controller;
         public StateManager States;
         public GameObject GameObject;

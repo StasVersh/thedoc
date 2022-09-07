@@ -15,6 +15,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         [Header("Particles")] 
         [SerializeField] private ParticleSystem _dustRunParticles;
         [SerializeField] private ParticleSystem _dustFallParticles;
+        [SerializeField] private PlayerSteamController _steamController;
 
         [Inject] private Player _player;
 
@@ -35,6 +36,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             _player.FallingStepValue = _fallingStepValue;
             _player.DustRunParticles = _dustRunParticles;
             _player.DustFallParticles = _dustFallParticles;
+            _player.SteamController = _steamController;
         }
     }
 }
