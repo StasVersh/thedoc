@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 1512
+  controlID: 2823
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 1513
+  controlID: 2824
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 1514
+  controlID: 2825
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -294,7 +294,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 0}
+      snapOffset: {x: 0, y: 25}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-transform-toolbar
@@ -442,9 +442,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 75.46353, y: -83.17542, z: 135.60127}
+    m_Target: {x: 85.87361, y: -89.9018, z: -0.06708409}
     speed: 2
-    m_Value: {x: 75.46353, y: -83.17542, z: 135.60127}
+    m_Value: {x: 85.87361, y: -89.9018, z: -0.06708409}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -495,9 +495,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 38.561527
+    m_Target: 13.282501
     speed: 2
-    m_Value: 38.561527
+    m_Value: 13.282501
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -633,9 +633,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 0ec40000
-      m_LastClickedID: 50190
-      m_ExpandedIDs: bef9ffff08fbffff867b00004c7c000020c60000
+      m_SelectedIDs: a4f9ffff
+      m_LastClickedID: -1628
+      m_ExpandedIDs: 5adfffff42f7ffffa4f9ffffbef9ffffd6f9ffff08fbffff2e7d0000f47d0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -793,22 +793,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/ProjectAssets/Resources/Scripts
+    - Assets/ProjectAssets/Resources/Locations/Cliff/Prefab
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/ProjectAssets/Resources/Scripts
+  - Assets/ProjectAssets/Resources/Locations/Cliff/Prefab
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\micro\Documents\GitHub\thedoc\TheDoc
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 62900000
-    m_LastClickedID: 36962
-    m_ExpandedIDs: 000000004e830000508300005283000000ca9a3b
+    m_SelectedIDs: ac9c0000
+    m_LastClickedID: 40108
+    m_ExpandedIDs: 000000006e8400007084000072840000a8a20000b2b2000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -836,7 +836,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000004e830000508300005283000000ca9a3b
+    m_ExpandedIDs: 000000006e840000708400007284000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -861,9 +861,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 0ec40000
-    m_LastClickedInstanceID: 50190
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: a4f9ffff
+    m_LastClickedInstanceID: -1628
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
