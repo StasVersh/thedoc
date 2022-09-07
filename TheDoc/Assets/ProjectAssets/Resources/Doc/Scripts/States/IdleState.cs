@@ -1,37 +1,40 @@
 ﻿using ProjectAssets.Resources.Doc.Scripts.Controllers;
+using ProjectAssets.Resources.Doc.Scripts.Model;
 using ProjectAssets.Resources.Doc.Scripts.Values;
-using UnityEngine;
-using CharacterController = ProjectAssets.Resources.Doc.Scripts.Controllers.CharacterController;
+using UnityEngine.InputSystem;
 
 namespace ProjectAssets.Resources.Doc.Scripts.States
 {
-    public class IdleState : GroundedState
+    public class IdleState : UnmovableState
     {
-        public IdleState(StateMachine stateMachine, CharacterController character) : base(stateMachine, character)
+        public IdleState(StateMachine stateMachine, Player player) : base(stateMachine, player)
         {
         }
 
         public override void Enter()
         {
             base.Enter();
-            base.Debug("Idle");
-            if(Input.GetAxisRaw("Horizontal") == 0.0f) _character.Reset();
-            _character.SetAnimation(CharacterAnimations.Idle);
-        }
-
-        public override void LogicUpdate()
-        {
-            base.LogicUpdate();
-            if (_character.HorizontalDirection != 0.0f)
-            {
-                _stateMachine.ChangeState(_character.RunState);
-            }
+            _player.Controller.SetAnimation(PlayerAnimations.Idle);
+            _player.Input.PlayerInput.Movement.performed += MovementOnPerformed;
+            _player.Input.PlayerInput.Jump.started += JumpOnStarted;
         }
 
         public override void Exit()
         {
             base.Exit();
-            _character.SetDefault();
+            _player.Input.PlayerInput.Movement.performed -= MovementOnPerformed;
+            _player.Input.PlayerInput.Jump.started -= JumpOnStarted;
+            _player.Controller.SetAnimation(PlayerAnimations.Base);
+        }
+        
+        private void JumpOnStarted(InputAction.CallbackContext obj)
+        {
+            _stateMachine.ChangeState(_player.States.JumpingState);
+        }   
+
+        private void MovementOnPerformed(InputAction.CallbackContext obj)
+        {
+            _stateMachine.ChangeState(_player.States.RunningState);
         }
     }
 }

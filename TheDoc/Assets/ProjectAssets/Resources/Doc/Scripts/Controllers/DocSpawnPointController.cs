@@ -1,5 +1,4 @@
-using System;
-using ProjectAssets.Resources.Doc.Model;
+using ProjectAssets.Resources.Doc.Scripts.Model;
 using UnityEngine;
 using Zenject;
 
@@ -7,11 +6,13 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
 {
     public class DocSpawnPointController : MonoBehaviour
     {
-        [SerializeField] private GameObject _playerPrefab;
-
+        [Inject] private DiContainer _container;
+        [Inject] private Player _player;
         private void OnEnable()
-        {
-            Instantiate(_playerPrefab, transform.position, Quaternion.identity, null);
+        { 
+            var player = _container.InstantiatePrefab(_player.GameObject);
+            _player.GameObject = player;
+            _player.GameObject.transform.position = transform.position;
         }
     }
 }

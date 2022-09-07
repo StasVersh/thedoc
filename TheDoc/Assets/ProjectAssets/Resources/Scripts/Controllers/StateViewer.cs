@@ -1,24 +1,25 @@
-﻿using System;
+﻿using ProjectAssets.Resources.Doc.Scripts.Installers;
+using ProjectAssets.Resources.Doc.Scripts.Model;
 using TMPro;
 using UnityEngine;
-using EventHandler = ProjectAssets.Resources.Doc.Scripts.Utilitys.EventHandler;
+using Zenject;
 
-namespace ProjectAssets.Resources.Doc.Scripts.Controllers
+namespace ProjectAssets.Resources.Scripts.Controllers
 {
     [RequireComponent(typeof(TMP_Text))]
     public class StateViewer : MonoBehaviour
     {
+        [Inject] private Player _player;
         private TMP_Text _text;
 
         private void Start()
         {
-            _text = GetComponent<TMP_Text>();
-            EventHandler.StateChanging.AddListener(UpdateUI);
+            _text = GetComponent<TMP_Text>(); 
         }
 
-        private void UpdateUI(string log)
+        private void Update()
         {
-            _text.text = log;
+            _text.text = _player.IsFalling.ToString();
         }
     }
 }
