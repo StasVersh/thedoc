@@ -42,14 +42,26 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Blure4
+    uniqueID: 2142322373
+    locked: 0
   - name: Background 3
     uniqueID: 1035938165
+    locked: 0
+  - name: Blure3
+    uniqueID: 3333780001
     locked: 0
   - name: Background 2
     uniqueID: 2794653359
     locked: 0
+  - name: Blure2
+    uniqueID: 1583605145
+    locked: 0
   - name: Background 1
     uniqueID: 3703734589
+    locked: 0
+  - name: Blure1
+    uniqueID: 358322181
     locked: 0
   - name: Background
     uniqueID: 468924541
@@ -65,6 +77,18 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 1538715065
+    locked: 0
+  - name: Frontground 1
+    uniqueID: 3456505279
+    locked: 0
+  - name: Frontground 2
+    uniqueID: 3503307809
+    locked: 0
+  - name: Frontgrount 3
+    uniqueID: 3692382515
+    locked: 0
+  - name: Frontgrount 4
+    uniqueID: 3898936421
     locked: 0
   - name: UI
     uniqueID: 2965893039
