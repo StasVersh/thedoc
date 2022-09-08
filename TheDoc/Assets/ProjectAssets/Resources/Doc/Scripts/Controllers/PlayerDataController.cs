@@ -20,6 +20,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         [SerializeField] private float _hoverForce;
         [SerializeField] private float _maxFallingSpeed;
         [SerializeField] private float _fallingStepValue;
+        [SerializeField] private float _maxFallingSpeed;
         [Header("Particles")] 
         [SerializeField] private ParticleSystem _runParticles;
         [SerializeField] private ParticleSystem _fallParticles;
@@ -56,6 +57,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             _player.JumpParticles = _jumpParticles;
             _player.HoverParticles = _hoverParticles;
             _player.SteamController = _steamController;
+            _player.MaxFallingSpeed = _maxFallingSpeed;
         }
     }
 }
