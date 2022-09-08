@@ -1,4 +1,6 @@
+using System;
 using ProjectAssets.Resources.Doc.Scripts.Model;
+using ProjectAssets.Resources.Doc.Scripts.Values;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
@@ -12,33 +14,74 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
 
         private Rigidbody2D _rigidbody;
         private Animator _animator;
+        private float _faceDirection;
 
         public void Move(float speedValue, float direction)
         {
             if (direction != 0.0f)
             {
                 transform.localScale = direction > 0 ? new Vector3(1, 1) : new Vector3(-1, 1);
+                _faceDirection = direction > 0 ? 1 : -1;
             }
             _rigidbody.velocity = new Vector2 (speedValue * direction, _rigidbody.velocity.y);
         }
+
         public void Jump(float speedValue)
         {
             if(_rigidbody == null) return;
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
             _rigidbody.AddForce(new Vector2(0, speedValue), ForceMode2D.Impulse);
         }
+
+        public void Hover(float forceValue, float maxSpeed)
+        {
+            _rigidbody.AddForce(new Vector2(0, forceValue), ForceMode2D.Force);
+            var rigidbodyVelocity = _rigidbody.velocity;
+            if (rigidbodyVelocity.y < -maxSpeed)
+            {
+                rigidbodyVelocity.y = -maxSpeed;
+            }
+
+            _rigidbody.velocity = rigidbodyVelocity;
+        }
+
         public void StopJump()
         {
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
         }
+
         public void Reset()
         {
             _rigidbody.velocity = Vector2.zero;
         }
+
+        public void ResetY()
+        {
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
+        }
+
+        public void DashingStart(float speed)
+        {
+            _rigidbody.velocity = new Vector2(speed * _faceDirection, 0);
+        }
+        
+        public void DashingBrake(float speed)
+        {
+            _rigidbody.AddForce(new Vector2(speed * -_faceDirection, 0));
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
+        }
+        
+        public bool DashEnding()
+        {
+            return Math.Abs(_rigidbody.velocity.x) <= _player.Speed;
+        }
+
         public void SetAnimation(string animationName)
         {
+            _animator.Play(PlayerAnimations.Base);
             _animator.Play(animationName);
         }
+
         private void OnEnable()
         {
             _player.Controller = this;
@@ -48,6 +91,17 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         {
             _rigidbody = GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
+        }
+
+        private void Update()
+        {
+            var rigidbodyVelocity = _rigidbody.velocity;
+            if (rigidbodyVelocity.y < -_player.MaxFallingSpeed)
+            {
+                rigidbodyVelocity.y = -_player.MaxFallingSpeed;
+            }
+
+            _rigidbody.velocity = rigidbodyVelocity;
         }
     }
 }

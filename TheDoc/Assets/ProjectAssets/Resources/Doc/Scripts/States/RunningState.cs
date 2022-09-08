@@ -18,7 +18,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
             base.Enter();
             _player.Controller.SetAnimation(PlayerAnimations.Running);
             _player.Input.PlayerInput.Jump.started += JumpOnStarted;
-            _player.DustRunParticles.Play();
+            _player.RunParticles.Play();
         }
 
         public override void LogicUpdate()
@@ -39,7 +39,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
             base.Exit();
             _player.Controller.SetAnimation(PlayerAnimations.Base);
             _player.Input.PlayerInput.Jump.started -= JumpOnStarted;
-            _player.DustRunParticles.Stop();
+            _player.RunParticles.Stop();
         }
         
         private void JumpOnStarted(InputAction.CallbackContext obj)

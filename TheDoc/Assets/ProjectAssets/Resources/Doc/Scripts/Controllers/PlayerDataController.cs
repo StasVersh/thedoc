@@ -8,14 +8,23 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
 {
     public class PlayerDataController : MonoBehaviour
     {
+        [Header("Ability's")]
+        [SerializeField] private bool _haveHover;
+        [SerializeField] private bool _haveDash;
         [Header("Movement")] 
         [SerializeField] private float _speed;
         [SerializeField] private float _jumpSpeed;
+        [SerializeField] private float _dashStartSpeed;
+        [SerializeField] private float _dashBreakForce;
+        [SerializeField] private float _hoverMaxSpeed;
+        [SerializeField] private float _hoverForce;
+        [SerializeField] private float _maxFallingSpeed;
         [SerializeField] private float _fallingStepValue;
         [Header("Particles")] 
-        [SerializeField] private ParticleSystem _dustRunParticles;
-        [SerializeField] private ParticleSystem _dustFallParticles;
-        [SerializeField] private ParticleSystem _dustJumpParticles;
+        [SerializeField] private ParticleSystem _runParticles;
+        [SerializeField] private ParticleSystem _fallParticles;
+        [SerializeField] private ParticleSystem _jumpParticles;
+        [SerializeField] private ParticleSystem _hoverParticles;
         [SerializeField] private PlayerSteamController _steamController;
 
         [Inject] private Player _player;
@@ -32,12 +41,20 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
 
         private void UpdateData()
         {
+            _player.HaveHover = _haveHover;
+            _player.HaveDash = _haveDash;
             _player.Speed = _speed;
+            _player.DashStartSpeed = _dashStartSpeed;
+            _player.DashBreakForce = _dashBreakForce;
             _player.JumpSpeed = _jumpSpeed;
+            _player.HoverMaxSpeed = _hoverMaxSpeed;
+            _player.HoverForce = _hoverForce;
+            _player.MaxFallingSpeed = _maxFallingSpeed;
             _player.FallingStepValue = _fallingStepValue;
-            _player.DustRunParticles = _dustRunParticles;
-            _player.DustFallParticles = _dustFallParticles;
-            _player.DustJumpParticles = _dustJumpParticles;
+            _player.RunParticles = _runParticles;
+            _player.FallParticles = _fallParticles;
+            _player.JumpParticles = _jumpParticles;
+            _player.HoverParticles = _hoverParticles;
             _player.SteamController = _steamController;
         }
     }

@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 
 namespace ProjectAssets.Resources.Doc.Scripts.States
 {
-    public class IdleState : UnmovableState
+    public class IdleState : MovableState
     {
         public IdleState(StateMachine stateMachine, Player player) : base(stateMachine, player)
         {
@@ -19,6 +19,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
             _player.Controller.SetAnimation(PlayerAnimations.Idle);
             _player.Input.PlayerInput.Movement.performed += MovementOnPerformed;
             _player.Input.PlayerInput.Jump.started += JumpOnStarted;
+            _player.Controller.Reset();
             _player.SteamController.StartSteam();
         }
 

@@ -40,6 +40,10 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         {
             _player.CanJump = _canJump;
             _player.IsFalling = _isFalling;
+            if (_canJump)
+            {
+                _player.CanDash = true;
+            }
         }
 
         private void LogicUpdate()

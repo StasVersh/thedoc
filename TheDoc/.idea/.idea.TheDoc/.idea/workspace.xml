@@ -5,14 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72ae7df9-ef79-4899-9b5d-b03cba5dcb82" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/DashingState.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/DashingState.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/HoveringState.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/HoveringState.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TheDoc/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TheDoc/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Prefabs/Doc.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Prefabs/Doc.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/Controllers/ColliderDetectionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/Controllers/ColliderDetectionController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/Controllers/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/Controllers/PlayerController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/Controllers/PlayerDataController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/Controllers/PlayerDataController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/Controllers/StateManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/Controllers/StateManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/Model/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/Model/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/FallingState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/FallingState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/IdleState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/IdleState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/JumpingState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/JumpingState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Locations/Cliff/Prefab/LampPost.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Locations/Cliff/Prefab/LampPost.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/MovableState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/MovableState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/PlayerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/PlayerState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/RunningState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/RunningState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/InputMeneger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/InputMeneger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/InputMeneger.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/InputMeneger.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Scenes/Cliff.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Scenes/Cliff.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Scenes/Platfirms.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Scenes/Platfirms.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +44,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2C029nZF1mSL2cKX7i2XfFOUFtE" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -41,6 +58,7 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="rider.run.widget.enabled.cache" value="false" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -112,7 +130,7 @@
       <workItem from="1659361445378" duration="4052000" />
       <workItem from="1659525566698" duration="4409000" />
       <workItem from="1662581802722" duration="8929000" />
-      <workItem from="1662626975097" duration="1349000" />
+      <workItem from="1662626975097" duration="18147000" />
     </task>
     <servers />
   </component>
