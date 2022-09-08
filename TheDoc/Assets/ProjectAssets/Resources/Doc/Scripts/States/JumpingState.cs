@@ -17,6 +17,8 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
             _player.Controller.SetAnimation(PlayerAnimations.Jumping);
             _player.Input.PlayerInput.Jump.canceled += JumpOnCanceled;
             _player.Controller.Jump(_player.JumpSpeed);
+            _player.DustFallParticles.Play();
+            _player.DustJumpParticles.Play();
         }
 
         public override void LogicUpdate()
@@ -33,6 +35,8 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
             base.Enter();
             _player.Input.PlayerInput.Jump.canceled -= JumpOnCanceled;
             _player.Controller.SetAnimation(PlayerAnimations.Base);
+            _player.DustFallParticles.Stop();
+            _player.DustJumpParticles.Stop();
         }
         
         private void JumpOnCanceled(InputAction.CallbackContext obj)

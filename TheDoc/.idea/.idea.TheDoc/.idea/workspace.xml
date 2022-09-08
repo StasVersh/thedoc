@@ -5,15 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72ae7df9-ef79-4899-9b5d-b03cba5dcb82" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Scripts/Controllers/LightningNoiseController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Scripts/Controllers/LightningNoiseController.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TheDoc/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TheDoc/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Prefabs/Doc.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Prefabs/Doc.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Locations/Cliff/Graphics/Png/LampPost.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Locations/Cliff/Graphics/Png/LampPost.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Locations/Cliff/Graphics/Png/LampPost.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Locations/Cliff/Graphics/Png/LampPost.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/Controllers/PlayerDataController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/Controllers/PlayerDataController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/Model/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/Model/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/JumpingState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/JumpingState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Locations/Cliff/Prefab/LampPost.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Locations/Cliff/Prefab/LampPost.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Scenes/Cliff.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Scenes/Cliff.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +111,8 @@
       <workItem from="1659351314134" duration="5032000" />
       <workItem from="1659361445378" duration="4052000" />
       <workItem from="1659525566698" duration="4409000" />
-      <workItem from="1662581802722" duration="7775000" />
+      <workItem from="1662581802722" duration="8929000" />
+      <workItem from="1662626975097" duration="1349000" />
     </task>
     <servers />
   </component>
