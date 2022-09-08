@@ -44,7 +44,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
 
         private void LogicUpdate()
         {
-            if (_groundCheck.Value == true && _groundDetector.Value == true)
+            if (_groundCheck.Value && _groundDetector.Value)
             {
                 _canJump = true;
             }

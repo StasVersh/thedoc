@@ -14768,6 +14768,7 @@ MonoBehaviour:
   _speed: 10
   _jumpSpeed: 26
   _fallingStepValue: 0.05
+  _maxFallingSpeed: 5
   _dustRunParticles: {fileID: 9095986743159430381}
   _dustFallParticles: {fileID: 6022471430261461116}
   _steamController: {fileID: 3483930790501519915}

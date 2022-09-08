@@ -8,6 +8,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Model
         public float Speed;
         public float JumpSpeed;
         public float FallingStepValue;
+        public float MaxFallingSpeed;
         public bool CanJump;
         public bool IsFalling;
         public InputMeneger Input;

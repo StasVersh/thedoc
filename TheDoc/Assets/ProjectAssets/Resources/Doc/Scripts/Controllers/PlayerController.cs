@@ -1,3 +1,4 @@
+using System;
 using ProjectAssets.Resources.Doc.Scripts.Model;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -27,6 +28,15 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
             _rigidbody.AddForce(new Vector2(0, speedValue), ForceMode2D.Impulse);
         }
+
+        private void Update()
+        {
+            if (_rigidbody.velocity.y < _player.MaxFallingSpeed)
+            {
+                _rigidbody.velocity = new Vector2(0,-_player.MaxFallingSpeed);
+            }
+        }
+
         public void StopJump()
         {
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
