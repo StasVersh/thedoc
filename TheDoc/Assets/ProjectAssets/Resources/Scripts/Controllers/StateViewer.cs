@@ -21,7 +21,7 @@ namespace ProjectAssets.Resources.Scripts.Controllers
         {
             var fullState = _player.States._stateMachine.CurrentState.ToString();
             var lenght = fullState.Length - 1;
-            _text.text = fullState;
+            _text.text = _player.CanDoubleJump.ToString();
         }
     }
 }

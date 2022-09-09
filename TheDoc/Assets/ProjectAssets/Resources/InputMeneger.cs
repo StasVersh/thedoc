@@ -53,6 +53,15 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Hover"",
+                    ""type"": ""Button"",
+                    ""id"": ""5c14c2a3-fc58-46e4-bfb5-7bfe46100860"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -103,11 +112,22 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""0d48c07f-daff-487c-a5e2-b0b8acf9c7a1"",
-                    ""path"": ""<Mouse>/rightButton"",
+                    ""path"": ""<Keyboard>/comma"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2f85a470-e9e5-4052-bb58-30ee0fc187b8"",
+                    ""path"": ""<Keyboard>/period"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Hover"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -133,6 +153,7 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
         m_PlayerInput_Movement = m_PlayerInput.FindAction("Movement", throwIfNotFound: true);
         m_PlayerInput_Jump = m_PlayerInput.FindAction("Jump", throwIfNotFound: true);
         m_PlayerInput_Dash = m_PlayerInput.FindAction("Dash", throwIfNotFound: true);
+        m_PlayerInput_Hover = m_PlayerInput.FindAction("Hover", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -195,6 +216,7 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerInput_Movement;
     private readonly InputAction m_PlayerInput_Jump;
     private readonly InputAction m_PlayerInput_Dash;
+    private readonly InputAction m_PlayerInput_Hover;
     public struct PlayerInputActions
     {
         private @InputMeneger m_Wrapper;
@@ -202,6 +224,7 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_PlayerInput_Movement;
         public InputAction @Jump => m_Wrapper.m_PlayerInput_Jump;
         public InputAction @Dash => m_Wrapper.m_PlayerInput_Dash;
+        public InputAction @Hover => m_Wrapper.m_PlayerInput_Hover;
         public InputActionMap Get() { return m_Wrapper.m_PlayerInput; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -220,6 +243,9 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
                 @Dash.started -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnDash;
                 @Dash.performed -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnDash;
                 @Dash.canceled -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnDash;
+                @Hover.started -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnHover;
+                @Hover.performed -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnHover;
+                @Hover.canceled -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnHover;
             }
             m_Wrapper.m_PlayerInputActionsCallbackInterface = instance;
             if (instance != null)
@@ -233,6 +259,9 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
+                @Hover.started += instance.OnHover;
+                @Hover.performed += instance.OnHover;
+                @Hover.canceled += instance.OnHover;
             }
         }
     }
@@ -251,5 +280,6 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnHover(InputAction.CallbackContext context);
     }
 }
