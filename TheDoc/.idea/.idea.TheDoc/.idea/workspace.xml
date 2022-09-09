@@ -4,39 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf30be8e-3208-4dfc-9ece-97a22a42a41e" name="Changes" comment="" />
+    <list default="true" id="72ae7df9-ef79-4899-9b5d-b03cba5dcb82" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/FallingState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/FallingState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/RunningState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/RunningState.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/da/e194a8bb/Single.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ProjectAssets/Resources/Scripts/Controllers/TargetSetController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/Controllers/DocSpawnPointController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b2c530e619ab42aeba489c5671c8267115d000/4b/f74a3714/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2C029nZF1mSL2cKX7i2XfFOUFtE" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_package_manager_path" value="npm" />
     <property name="rider.run.widget.enabled.cache" value="false" />
-    <property name="settings.editor.selected.configurable" value="CodeLensConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
@@ -80,7 +79,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="bf30be8e-3208-4dfc-9ece-97a22a42a41e" name="Changes" comment="" />
+      <changelist id="72ae7df9-ef79-4899-9b5d-b03cba5dcb82" name="Changes" comment="" />
       <created>1657925036467</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -106,10 +105,8 @@
       <workItem from="1659351314134" duration="5032000" />
       <workItem from="1659361445378" duration="4052000" />
       <workItem from="1659525566698" duration="4409000" />
-      <workItem from="1662581802722" duration="8929000" />
-      <workItem from="1662626975097" duration="18147000" />
-      <workItem from="1662719252750" duration="8805000" />
-      <workItem from="1662758582392" duration="4497000" />
+      <workItem from="1662581802722" duration="3446000" />
+      <workItem from="1662751559436" duration="1038000" />
     </task>
     <servers />
   </component>
