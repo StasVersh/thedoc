@@ -16,6 +16,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
             base.Enter();
             _player.Controller.SetAnimation(PlayerAnimations.Falling);
             _player.Input.PlayerInput.Jump.started += JumpOnStarted;
+            _player.Input.PlayerInput.Hover.started += HoverOnStarted;
             if (_player.Input.PlayerInput.Jump.IsPressed() && _player.HaveHover)
             {
                 _stateMachine.ChangeState(_player.States.HoveringState);
@@ -37,10 +38,24 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         public override void Exit()
         {
             base.Exit();
+            _player.Input.PlayerInput.Jump.started -= JumpOnStarted;
+            _player.Input.PlayerInput.Hover.started -= HoverOnStarted;
             _player.Controller.SetAnimation(PlayerAnimations.Base);
         }
 
         private void JumpOnStarted(InputAction.CallbackContext obj)
+        {
+            if (_player.CanDoubleJump && _player.HaveDoubleJump)
+            {
+                _stateMachine.ChangeState(_player.States.DoubleJumpState);
+            }
+            else if(_player.HaveHover)
+            {
+                _stateMachine.ChangeState(_player.States.HoveringState);
+            }
+        }
+
+        private void HoverOnStarted(InputAction.CallbackContext obj)
         {
             if (_player.HaveHover)
             {

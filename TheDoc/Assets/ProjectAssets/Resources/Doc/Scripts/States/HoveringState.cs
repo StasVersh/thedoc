@@ -15,7 +15,8 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         {
             base.Enter();
             _player.Controller.SetAnimation(PlayerAnimations.Hovering);
-            _player.Input.PlayerInput.Jump.canceled += JumpOnCanceled;
+            _player.Input.PlayerInput.Jump.canceled += HoverOnCanceled;
+            _player.Input.PlayerInput.Hover.canceled += HoverOnCanceled;
             _player.HoverParticles.Play();
         }
 
@@ -33,11 +34,12 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         {
             base.Exit();
             _player.Controller.SetAnimation(PlayerAnimations.Base);
-            _player.Input.PlayerInput.Jump.canceled -= JumpOnCanceled;
+            _player.Input.PlayerInput.Jump.canceled -= HoverOnCanceled;
+            _player.Input.PlayerInput.Hover.canceled -= HoverOnCanceled;
             _player.HoverParticles.Stop();
         }
 
-        private void JumpOnCanceled(InputAction.CallbackContext obj)
+        private void HoverOnCanceled(InputAction.CallbackContext obj)
         {
             _stateMachine.ChangeState(_player.States.FallingState);
         }
