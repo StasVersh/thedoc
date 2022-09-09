@@ -14,14 +14,36 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
 
         private Rigidbody2D _rigidbody;
         private Animator _animator;
-        private float _faceDirection;
+        
+        private void OnEnable()
+        {
+            _player.Controller = this;
+        }
+
+        private void Start()
+        {
+            _rigidbody = GetComponent<Rigidbody2D>();
+            _animator = GetComponent<Animator>();
+            transform.localScale = _player.FaceDirection > 0 ? new Vector3(1, 1) : new Vector3(-1, 1);
+        }
+
+        private void Update()
+        {
+            var rigidbodyVelocity = _rigidbody.velocity;
+            if (rigidbodyVelocity.y < -_player.MaxFallingSpeed)
+            {
+                rigidbodyVelocity.y = -_player.MaxFallingSpeed;
+            }
+
+            _rigidbody.velocity = rigidbodyVelocity;
+        }
 
         public void Move(float speedValue, float direction)
         {
             if (direction != 0.0f)
             {
                 transform.localScale = direction > 0 ? new Vector3(1, 1) : new Vector3(-1, 1);
-                _faceDirection = direction > 0 ? 1 : -1;
+                _player.FaceDirection = direction > 0 ? 1 : -1;
             }
             _rigidbody.velocity = new Vector2 (speedValue * direction, _rigidbody.velocity.y);
         }
@@ -31,6 +53,11 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             if(_rigidbody == null) return;
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
             _rigidbody.AddForce(new Vector2(0, speedValue), ForceMode2D.Impulse);
+        }
+
+        public void StopJump()
+        {
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
         }
 
         public void Hover(float forceValue, float maxSpeed)
@@ -45,9 +72,23 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             _rigidbody.velocity = rigidbodyVelocity;
         }
 
-        public void StopJump()
+        public void DashingStart(float speed, float height)
         {
+            var position = gameObject.transform.position;
+            position = new Vector2(position.x, position.y + height);
+            gameObject.transform.position = position;
+            _rigidbody.velocity = new Vector2(speed * _player.FaceDirection, 0);
+        }
+
+        public void DashingBrake(float speed)
+        {
+            _rigidbody.AddForce(new Vector2(speed * -_player.FaceDirection, 0));
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
+        }
+
+        public bool DashEnding()
+        {
+            return Math.Abs(_rigidbody.velocity.x) <= _player.Speed;
         }
 
         public void Reset()
@@ -60,48 +101,10 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
         }
 
-        public void DashingStart(float speed)
-        {
-            _rigidbody.velocity = new Vector2(speed * _faceDirection, 0);
-        }
-        
-        public void DashingBrake(float speed)
-        {
-            _rigidbody.AddForce(new Vector2(speed * -_faceDirection, 0));
-            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
-        }
-        
-        public bool DashEnding()
-        {
-            return Math.Abs(_rigidbody.velocity.x) <= _player.Speed;
-        }
-
         public void SetAnimation(string animationName)
         {
             _animator.Play(PlayerAnimations.Base);
             _animator.Play(animationName);
-        }
-
-        private void OnEnable()
-        {
-            _player.Controller = this;
-        }
-
-        private void Start()
-        {
-            _rigidbody = GetComponent<Rigidbody2D>();
-            _animator = GetComponent<Animator>();
-        }
-
-        private void Update()
-        {
-            var rigidbodyVelocity = _rigidbody.velocity;
-            if (rigidbodyVelocity.y < -_player.MaxFallingSpeed)
-            {
-                rigidbodyVelocity.y = -_player.MaxFallingSpeed;
-            }
-
-            _rigidbody.velocity = rigidbodyVelocity;
         }
     }
 }

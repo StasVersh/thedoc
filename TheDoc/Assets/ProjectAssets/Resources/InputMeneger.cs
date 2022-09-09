@@ -103,7 +103,7 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""0d48c07f-daff-487c-a5e2-b0b8acf9c7a1"",
-                    ""path"": ""<Keyboard>/shift"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

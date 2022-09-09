@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using ProjectAssets.Resources.Doc.Scripts.Model;
 using UnityEngine;
 using Zenject;
@@ -42,8 +43,14 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             _player.IsFalling = _isFalling;
             if (_canJump)
             {
-                _player.CanDash = true;
+                StartCoroutine(DashRollback());
             }
+        }
+
+        private IEnumerator DashRollback()
+        {
+            yield return new WaitForSeconds(_player.DashRollback);
+            _player.CanDash = true;
         }
 
         private void LogicUpdate()

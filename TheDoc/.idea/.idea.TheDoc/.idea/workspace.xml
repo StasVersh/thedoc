@@ -4,31 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72ae7df9-ef79-4899-9b5d-b03cba5dcb82" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/DashingState.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/DashingState.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/HoveringState.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/HoveringState.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TheDoc/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TheDoc/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Prefabs/Doc.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Prefabs/Doc.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/Controllers/ColliderDetectionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/Controllers/ColliderDetectionController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/Controllers/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/Controllers/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/Controllers/PlayerDataController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/Controllers/PlayerDataController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/Controllers/StateManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/Controllers/StateManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/Model/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/Model/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/FallingState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/FallingState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/IdleState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/IdleState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/JumpingState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/JumpingState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/MovableState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/MovableState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/PlayerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/PlayerState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/RunningState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/States/RunningState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/InputMeneger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/InputMeneger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/InputMeneger.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Resources/InputMeneger.inputactions" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Scenes/Cliff.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Scenes/Cliff.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProjectAssets/Scenes/Platfirms.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProjectAssets/Scenes/Platfirms.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
-    </list>
+    <list default="true" id="bf30be8e-3208-4dfc-9ece-97a22a42a41e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,6 +36,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="rider.run.widget.enabled.cache" value="false" />
+    <property name="settings.editor.selected.configurable" value="CodeLensConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
@@ -103,7 +80,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="72ae7df9-ef79-4899-9b5d-b03cba5dcb82" name="Changes" comment="" />
+      <changelist id="bf30be8e-3208-4dfc-9ece-97a22a42a41e" name="Changes" comment="" />
       <created>1657925036467</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -131,6 +108,7 @@
       <workItem from="1659525566698" duration="4409000" />
       <workItem from="1662581802722" duration="8929000" />
       <workItem from="1662626975097" duration="18147000" />
+      <workItem from="1662719252750" duration="8805000" />
     </task>
     <servers />
   </component>
