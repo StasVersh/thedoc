@@ -24396,7 +24396,6 @@ MonoBehaviour:
   _faceDirection: 1
   _haveHover: 1
   _haveDash: 1
-  _haveDoubleJump: 1
   _speed: 10
   _jumpSpeed: 26
   _dashSpeed: 40
@@ -24405,7 +24404,6 @@ MonoBehaviour:
   _dashRollback: 0.1
   _hoverMaxSpeed: 5.3
   _hoverForce: 10
-  _doubleJumpSpeed: 24
   _maxFallingSpeed: 40
   _fallingStepValue: 0.05
   _runParticles: {fileID: 9095986743159430381}

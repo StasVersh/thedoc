@@ -31,15 +31,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Hover",
-                    "type": "Button",
-                    "id": "5c14c2a3-fc58-46e4-bfb5-7bfe46100860",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -90,22 +81,11 @@
                 {
                     "name": "",
                     "id": "0d48c07f-daff-487c-a5e2-b0b8acf9c7a1",
-                    "path": "<Keyboard>/comma",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2f85a470-e9e5-4052-bb58-30ee0fc187b8",
-                    "path": "<Keyboard>/period",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Hover",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
