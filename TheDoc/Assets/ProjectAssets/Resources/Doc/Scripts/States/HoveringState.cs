@@ -14,7 +14,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         public override void Enter()
         {
             base.Enter();
-            _player.Controller.SetAnimation(PlayerAnimations.Jumping);
+            _player.Controller.SetAnimation(PlayerAnimations.Hovering);
             _player.Input.PlayerInput.Jump.canceled += JumpOnCanceled;
             _player.HoverParticles.Play();
         }

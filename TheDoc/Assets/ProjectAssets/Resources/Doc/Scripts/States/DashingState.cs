@@ -1,5 +1,6 @@
 ﻿using ProjectAssets.Resources.Doc.Scripts.Controllers;
 using ProjectAssets.Resources.Doc.Scripts.Model;
+using ProjectAssets.Resources.Doc.Scripts.Values;
 using UnityEngine;
 
 namespace ProjectAssets.Resources.Doc.Scripts.States
@@ -16,6 +17,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         {
             base.Enter();
             _player.CanDash = false;
+            _player.Controller.SetAnimation(PlayerAnimations.Dashing);
             _player.Controller.DashingStart(_player.DashSpeed, _player.DashHeight);
             _player.DashWayParticles.Play();
             _player.DashParticles.Play();
@@ -34,6 +36,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         public override void Exit()
         {
             base.Exit();
+            _player.Controller.SetAnimation(PlayerAnimations.Base);
             _player.DashWayParticles.Stop();
             _player.DashParticles.Stop();
         }
