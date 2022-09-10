@@ -112,7 +112,7 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""0d48c07f-daff-487c-a5e2-b0b8acf9c7a1"",
-                    ""path"": ""<Keyboard>/comma"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -123,7 +123,7 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""2f85a470-e9e5-4052-bb58-30ee0fc187b8"",
-                    ""path"": ""<Keyboard>/period"",
+                    ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
