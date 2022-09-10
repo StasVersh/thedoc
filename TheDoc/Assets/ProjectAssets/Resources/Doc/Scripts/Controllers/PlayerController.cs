@@ -76,6 +76,10 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             {
                 rigidbodyVelocity.y = -maxSpeed;
             }
+            else if(rigidbodyVelocity.y > 0)
+            {
+                rigidbodyVelocity.y = 0;
+            }
 
             _rigidbody.velocity = rigidbodyVelocity;
         }

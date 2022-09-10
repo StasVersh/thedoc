@@ -24565,8 +24565,8 @@ MonoBehaviour:
   _hoverMaxSpeed: 5.3
   _hoverForce: 10
   _doubleJumpSpeed: 24
-  _hookingMaxSpeed: 2
-  _hookingForce: 15
+  _hookingMaxSpeed: 3
+  _hookingForce: 10
   _hookingJumpSpeed: 5
   _maxFallingSpeed: 40
   _fallingStepValue: 0.05

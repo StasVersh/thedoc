@@ -36,5 +36,10 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
             base.PhysicsUpdate();
             _player.Controller.Move(_player.Speed, _direction, _useInertia);
         }
+
+        protected bool CanHooking()
+        {
+            return _player.IsWallHit && !_player.CanJump && _direction == _player.FaceDirection;
+        }
     }
 }
