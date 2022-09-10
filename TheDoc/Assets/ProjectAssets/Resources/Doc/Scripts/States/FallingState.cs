@@ -17,7 +17,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
             _player.Controller.SetAnimation(PlayerAnimations.Falling);
             _player.Input.PlayerInput.Jump.started += JumpOnStarted;
             _player.Input.PlayerInput.Hover.started += HoverOnStarted;
-            if (_player.Input.PlayerInput.Jump.IsPressed() && _player.HaveHover)
+            if ((_player.Input.PlayerInput.Jump.IsPressed() || _player.Input.PlayerInput.Hover.IsPressed()) && _player.HaveHover)
             {
                 _stateMachine.ChangeState(_player.States.HoveringState);
             }
