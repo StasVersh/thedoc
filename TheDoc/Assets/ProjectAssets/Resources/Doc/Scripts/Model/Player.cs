@@ -20,6 +20,10 @@ namespace ProjectAssets.Resources.Doc.Scripts.Model
 
         public float DoubleJumpSpeed { get; set; }
         
+        public float HookingMaxSpeed { get; set; }
+        public float HookingForce { get; set; }
+        public float HookingJumpSpeed { get; set; }
+        
         public float MaxFallingSpeed { get; set; }
         public float FallingStepValue { get; set; }
 
@@ -27,10 +31,12 @@ namespace ProjectAssets.Resources.Doc.Scripts.Model
         public bool CanDash { get; set; }
         public bool CanDoubleJump { get; set; }
         public bool IsFalling { get; set; }
+        public bool IsWallHit { get; set; }
 
         public bool HaveHover { get; set; }
         public bool HaveDash { get; set; }
         public bool HaveDoubleJump { get; set; }
+        public bool HaveHooking { get; set; }
 
         public ParticleSystem RunParticles { get; set; }
         public ParticleSystem FallParticles { get; set; }

@@ -14,6 +14,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         [SerializeField] private bool _haveHover;
         [SerializeField] private bool _haveDash;
         [SerializeField] private bool _haveDoubleJump;
+        [SerializeField] private bool _haveHooking;
         [Header("Movement")] 
         [SerializeField] private float _speed;
         [SerializeField] private float _jumpSpeed;
@@ -27,6 +28,11 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         [SerializeField] private float _hoverForce;
         [Header("Double Jump")]
         [SerializeField] private float _doubleJumpSpeed;
+        [Header("Hooking")]
+        [SerializeField] private float _hookingMaxSpeed;
+        [SerializeField] private float _hookingForce;
+        [SerializeField] private float _hookingJumpSpeed;
+        [Header("Double Jump")]
         [Header("Physics")]
         [SerializeField] private float _maxFallingSpeed;
         [SerializeField] private float _fallingStepValue;
@@ -59,6 +65,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             _player.HaveHover = _haveHover;
             _player.HaveDash = _haveDash;
             _player.HaveDoubleJump = _haveDoubleJump;
+            _player.HaveHooking = _haveHooking;
             
             _player.Speed = _speed;
             _player.JumpSpeed = _jumpSpeed;
@@ -72,6 +79,10 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             _player.HoverForce = _hoverForce;
             
             _player.DoubleJumpSpeed = _doubleJumpSpeed;
+            
+            _player.HookingMaxSpeed = _hookingMaxSpeed;
+            _player.HookingForce = _hookingForce;
+            _player.HookingJumpSpeed = _hookingJumpSpeed;
             
             _player.MaxFallingSpeed = _maxFallingSpeed;
             _player.FallingStepValue = _fallingStepValue;

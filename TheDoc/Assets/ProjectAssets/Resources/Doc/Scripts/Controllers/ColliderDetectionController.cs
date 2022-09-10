@@ -11,6 +11,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         [Inject] private Player _player;
 
         [SerializeField] private GroundDetectorController _wallDetector;
+        [SerializeField] private GroundDetectorController _wallHitDetector;
         [SerializeField] private GroundDetectorController _groundDetector;
         [SerializeField] private GroundDetectorController _groundCheck;
 
@@ -34,6 +35,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
 
         private void DataUpdate()
         {
+            _player.IsWallHit = _wallHitDetector.Value;
             _player.CanJump = _canJump;
             _player.IsFalling = _isFalling;
             if (_canJump)

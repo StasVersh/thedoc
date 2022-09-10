@@ -23,7 +23,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-            _player.Controller.Hover(_player.HoverForce, _player.HoverMaxSpeed);
+            _player.Controller.AirBrake(_player.HoverForce, _player.HoverMaxSpeed);
             if (_player.CanJump)
             {
                 _stateMachine.ChangeState(_player.States.GroundedBaseState);

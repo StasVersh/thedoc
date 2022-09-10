@@ -29,6 +29,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
 
         private void Update()
         {
+            transform.localScale = _player.FaceDirection > 0 ? new Vector3(1, 1) : new Vector3(-1, 1);
             var rigidbodyVelocity = _rigidbody.velocity;
             if (rigidbodyVelocity.y < -_player.MaxFallingSpeed)
             {
@@ -38,14 +39,21 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             _rigidbody.velocity = rigidbodyVelocity;
         }
 
-        public void Move(float speedValue, float direction)
+        public void Move(float speedValue, float direction, bool useInertia)
         {
             if (direction != 0.0f)
             {
-                transform.localScale = direction > 0 ? new Vector3(1, 1) : new Vector3(-1, 1);
                 _player.FaceDirection = direction > 0 ? 1 : -1;
             }
-            _rigidbody.velocity = new Vector2 (speedValue * direction, _rigidbody.velocity.y);
+            var movingDirection = new Vector2 (speedValue * direction, _rigidbody.velocity.y);
+            if (!useInertia)
+            {
+                _rigidbody.velocity = movingDirection;
+            }
+            else
+            {
+                _rigidbody.AddForce(movingDirection);
+            }
         }
 
         public void Jump(float speedValue)
@@ -60,7 +68,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
         }
 
-        public void Hover(float forceValue, float maxSpeed)
+        public void AirBrake(float forceValue, float maxSpeed)
         {
             _rigidbody.AddForce(new Vector2(0, forceValue), ForceMode2D.Force);
             var rigidbodyVelocity = _rigidbody.velocity;

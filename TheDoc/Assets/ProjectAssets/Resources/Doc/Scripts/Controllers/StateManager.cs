@@ -20,6 +20,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         public HoveringState HoveringState { get; private set; }
         public DashingState DashingState { get; private set; }
         public DoubleJumpState DoubleJumpState { get; private set; }
+        public HookingState HookingState { get; private set; }
         private void OnEnable()
         {
             _player.States = this;
@@ -37,6 +38,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             HoveringState = new HoveringState(_stateMachine, _player);
             DashingState = new DashingState(_stateMachine, _player);
             DoubleJumpState = new DoubleJumpState(_stateMachine, _player);
+            HookingState = new HookingState(_stateMachine, _player);
 
             _stateMachine.Initialize(FallingState);
         }
