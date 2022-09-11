@@ -54,7 +54,6 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
 
         public void Jump(float speedValue, float direction)
         {
-            _player.FaceDirection = direction;
             if(_rigidbody == null) return;
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0); 
             _rigidbody.AddForce(new Vector2(direction * _player.Speed, speedValue), ForceMode2D.Impulse);

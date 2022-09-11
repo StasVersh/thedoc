@@ -24552,9 +24552,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _faceDirection: 1
-  _haveHover: 1
-  _haveDash: 1
-  _haveDoubleJump: 1
+  _haveHover: 0
+  _haveDash: 0
+  _haveDoubleJump: 0
   _haveHooking: 0
   _speed: 10
   _jumpSpeed: 26

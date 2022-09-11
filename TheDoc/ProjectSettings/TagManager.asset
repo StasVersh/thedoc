@@ -66,6 +66,9 @@ TagManager:
   - name: Background
     uniqueID: 468924541
     locked: 0
+  - name: Blure
+    uniqueID: 1007717553
+    locked: 0
   - name: Items
     uniqueID: 2158704983
     locked: 0
