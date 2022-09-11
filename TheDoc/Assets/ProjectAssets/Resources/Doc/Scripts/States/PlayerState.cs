@@ -30,5 +30,10 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         {
             _direction = _player.Input.PlayerInput.Movement.ReadValue<float>();
         }
+        
+        protected bool CanHooking()
+        {
+            return _player.IsWallHit && !_player.CanJump && _direction == _player.FaceDirection;
+        }
     }
 }

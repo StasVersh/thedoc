@@ -24555,7 +24555,7 @@ MonoBehaviour:
   _haveHover: 1
   _haveDash: 1
   _haveDoubleJump: 1
-  _haveHooking: 1
+  _haveHooking: 0
   _speed: 10
   _jumpSpeed: 26
   _dashSpeed: 40
@@ -24566,8 +24566,9 @@ MonoBehaviour:
   _hoverForce: 10
   _doubleJumpSpeed: 24
   _hookingMaxSpeed: 3
-  _hookingForce: 10
-  _hookingJumpSpeed: 5
+  _hookingForce: 24
+  _hookingJumpSpeed: 20
+  _hookingSpeed: 0.2
   _maxFallingSpeed: 40
   _fallingStepValue: 0.05
   _runParticles: {fileID: 9095986743159430381}
@@ -24654,6 +24655,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: fbe45fa9-08ab-4904-9939-b334fc21d362
     m_ActionName: PlayerInput/Dash[/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5c14c2a3-fc58-46e4-bfb5-7bfe46100860
+    m_ActionName: PlayerInput/Hover[/Keyboard/shift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerInput

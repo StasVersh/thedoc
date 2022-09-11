@@ -17,7 +17,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
             _player.CanDoubleJump = false;
             _player.Controller.SetAnimation(PlayerAnimations.DoubleJumping);
             _player.Input.PlayerInput.Jump.canceled += JumpOnCanceled;
-            _player.Controller.Jump(_player.DoubleJumpSpeed);
+            _player.Controller.Jump(_player.DoubleJumpSpeed, 0);
             _player.FallParticles.Play();
             _player.JumpParticles.Play();
         }

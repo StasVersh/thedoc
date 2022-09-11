@@ -1,22 +1,32 @@
-﻿using ProjectAssets.Resources.Doc.Scripts.Controllers;
+﻿using System.Threading.Tasks;
+using ProjectAssets.Resources.Doc.Scripts.Controllers;
 using ProjectAssets.Resources.Doc.Scripts.Model;
 using ProjectAssets.Resources.Doc.Scripts.Values;
 using UnityEngine.InputSystem;
 
 namespace ProjectAssets.Resources.Doc.Scripts.States
 {
-    public class JumpingState : MovableState
+    public class HookingJumpState : UnmovableState
     {
-        public JumpingState(StateMachine stateMachine, Player player) : base(stateMachine, player)
+        private bool _canMove;
+        public HookingJumpState(StateMachine stateMachine, Player player) : base(stateMachine, player)
         {
         }
-
+        
         public override void Enter()
         {
             base.Enter();
+            
+            var task = Task.Run(async delegate
+            {
+                await Task.Delay((int)_player.HookingSpeed);
+                return true;
+            });
+            task.Wait();
+            _canMove = task.Result;
             _player.Controller.SetAnimation(PlayerAnimations.Jumping);
             _player.Input.PlayerInput.Jump.canceled += JumpOnCanceled;
-            _player.Controller.Jump(_player.JumpSpeed, 0);
+            _player.Controller.Jump(_player.HookingJumpSpeed, -_direction);
             _player.FallParticles.Play();
             _player.JumpParticles.Play();
         }
@@ -30,9 +40,19 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
             }
         }
 
+        public override void PhysicsUpdate()
+        {
+            base.PhysicsUpdate();
+            if (_canMove)
+            {
+                _player.Controller.Move(_player.Speed, _direction);
+            }
+        }
+
         public override void Exit()
         {
             base.Enter();
+            _canMove = false;
             _player.Input.PlayerInput.Jump.canceled -= JumpOnCanceled;
             _player.Controller.SetAnimation(PlayerAnimations.Base);
             _player.FallParticles.Stop();
@@ -41,8 +61,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         
         private void JumpOnCanceled(InputAction.CallbackContext obj)
         {
-            _player.Controller.StopJump();
-            _stateMachine.ChangeState(_player.States.FallingState);
+            _canMove = true;
         }
     }
 }

@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using ProjectAssets.Resources.Doc.Scripts.Model;
+using ProjectAssets.Resources.Doc.Scripts.States;
 using ProjectAssets.Resources.Doc.Scripts.Values;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -14,6 +16,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
 
         private Rigidbody2D _rigidbody;
         private Animator _animator;
+        private bool _canMove;
         
         private void OnEnable()
         {
@@ -39,28 +42,30 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             _rigidbody.velocity = rigidbodyVelocity;
         }
 
-        public void Move(float speedValue, float direction, bool useInertia)
+        public void Move(float speedValue, float direction)
         {
             if (direction != 0.0f)
             {
                 _player.FaceDirection = direction > 0 ? 1 : -1;
             }
-            var movingDirection = new Vector2 (speedValue * direction, _rigidbody.velocity.y);
-            if (!useInertia)
-            {
-                _rigidbody.velocity = movingDirection;
-            }
-            else
-            {
-                _rigidbody.AddForce(movingDirection);
-            }
+            var rigidbodyVelocity = _rigidbody.velocity;
+            _rigidbody.velocity = new Vector2 (speedValue * direction, rigidbodyVelocity.y);
         }
 
-        public void Jump(float speedValue)
+        public void Jump(float speedValue, float direction)
         {
+            _player.FaceDirection = direction;
             if(_rigidbody == null) return;
-            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
-            _rigidbody.AddForce(new Vector2(0, speedValue), ForceMode2D.Impulse);
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0); 
+            _rigidbody.AddForce(new Vector2(direction * _player.Speed, speedValue), ForceMode2D.Impulse);
+            StartCoroutine(StopJumping());
+        }
+
+        private IEnumerator StopJumping()
+        {
+            _canMove = false;
+            yield return new WaitForSeconds(_player.HookingSpeed);
+            _canMove = true;
         }
 
         public void StopJump()
@@ -68,7 +73,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
         }
 
-        public void AirBrake(float forceValue, float maxSpeed)
+        public void VerticalAirBrake(float forceValue, float maxSpeed)
         {
             _rigidbody.AddForce(new Vector2(0, forceValue), ForceMode2D.Force);
             var rigidbodyVelocity = _rigidbody.velocity;
@@ -84,17 +89,18 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             _rigidbody.velocity = rigidbodyVelocity;
         }
 
-        public void DashingStart(float speed, float height)
+        public void DashingStart(float speed, float height, float direction)
         {
+            _player.FaceDirection = direction;
             var position = gameObject.transform.position;
             position = new Vector2(position.x, position.y + height);
             gameObject.transform.position = position;
-            _rigidbody.velocity = new Vector2(speed * _player.FaceDirection, 0);
+            _rigidbody.velocity = new Vector2(speed * direction, 0);
         }
 
-        public void DashingBrake(float speed)
+        public void HorizontalAirBrake(float speed, float direction)
         {
-            _rigidbody.AddForce(new Vector2(speed * -_player.FaceDirection, 0));
+            _rigidbody.AddForce(new Vector2(speed * -direction, 0));
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
         }
 
@@ -108,7 +114,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             _rigidbody.velocity = Vector2.zero;
         }
 
-        public void ResetY()
+        public void ResetY()    
         {
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
         }
@@ -117,6 +123,11 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         {
             _animator.Play(PlayerAnimations.Base);
             _animator.Play(animationName);
+        }
+
+        public bool CanMove()
+        {
+            return _canMove;
         }
     }
 }

@@ -6,7 +6,6 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
 {
     public abstract class MovableState : PlayerState
     {
-        protected bool _useInertia;
         protected MovableState(StateMachine stateMachine, Player player) : base(stateMachine, player)
         {
         }
@@ -34,12 +33,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         public override void PhysicsUpdate()
         {
             base.PhysicsUpdate();
-            _player.Controller.Move(_player.Speed, _direction, _useInertia);
-        }
-
-        protected bool CanHooking()
-        {
-            return _player.IsWallHit && !_player.CanJump && _direction == _player.FaceDirection;
+            _player.Controller.Move(_player.Speed, _direction);
         }
     }
 }

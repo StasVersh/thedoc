@@ -18,7 +18,14 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
             base.Enter();
             _player.CanDash = false;
             _player.Controller.SetAnimation(PlayerAnimations.Dashing);
-            _player.Controller.DashingStart(_player.DashSpeed, _player.DashHeight);
+            if (CanHooking())
+            {
+                _player.Controller.DashingStart(_player.DashSpeed, _player.DashHeight, -_player.FaceDirection);
+            }
+            else
+            {
+                _player.Controller.DashingStart(_player.DashSpeed, _player.DashHeight, _player.FaceDirection);
+            }
             _player.DashWayParticles.Play();
             _player.DashParticles.Play();
         }
@@ -26,7 +33,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         public override void PhysicsUpdate()
         {
             base.PhysicsUpdate();
-            _player.Controller.DashingBrake(_player.DashDistance);
+            _player.Controller.HorizontalAirBrake(_player.DashDistance, _player.FaceDirection);
             if (_player.Controller.DashEnding())
             {
                 _stateMachine.ChangeState(_player.States.FallingState);
