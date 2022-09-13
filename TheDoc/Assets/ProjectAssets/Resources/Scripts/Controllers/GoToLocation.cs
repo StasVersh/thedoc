@@ -2,6 +2,7 @@
 using ProjectAssets.Resources.Doc.Scripts.Values;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using EventHandler = ProjectAssets.Resources.Doc.Scripts.Utilitys.EventHandler;
 
 namespace ProjectAssets.Resources.Scripts.Controllers
 {
@@ -13,6 +14,7 @@ namespace ProjectAssets.Resources.Scripts.Controllers
         {
             if (col.CompareTag("Player"))
             {
+                EventHandler.LocationExit.Invoke();
                 SceneManager.LoadSceneAsync(_location.ToString());
             }
         }

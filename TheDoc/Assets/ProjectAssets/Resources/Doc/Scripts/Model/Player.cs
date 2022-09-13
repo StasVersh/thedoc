@@ -50,11 +50,12 @@ namespace ProjectAssets.Resources.Doc.Scripts.Model
         public PlayerSteamController SteamController { get; set; }
         public PlayerController Controller { get; set; }
         public StateManager States { get; set; }
+        public GameObject Prefab { get; set; }
         public GameObject GameObject { get; set; }
 
-        public Player(GameObject gameObject)
+        public Player(GameObject prefab)
         {
-            GameObject = gameObject;
+            Prefab = prefab;
             Input = new InputMeneger();
             Input.Enable();
         }

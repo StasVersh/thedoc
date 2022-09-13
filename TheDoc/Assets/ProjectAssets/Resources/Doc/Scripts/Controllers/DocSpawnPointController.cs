@@ -10,7 +10,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         [Inject] private Player _player;
         private void OnEnable()
         { 
-            var player = _container.InstantiatePrefab(_player.GameObject);
+            var player = _container.InstantiatePrefab(_player.Prefab);
             _player.GameObject = player;
             _player.GameObject.transform.position = transform.position;
         }

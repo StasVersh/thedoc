@@ -4,6 +4,6 @@ namespace ProjectAssets.Resources.Doc.Scripts.Utilitys
 {
     public static class EventHandler
     {
-        public static UnityEvent<string> StateChanging = new UnityEvent<string>();
+        public static UnityEvent LocationExit = new UnityEvent();
     }
 }
