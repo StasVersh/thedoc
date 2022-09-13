@@ -2,7 +2,8 @@
 {
     public enum Locations
     {
-        Cliff,
+        Cliff1,
+        Cliff2,
         Menson,
     }
 }

@@ -5,6 +5,8 @@ namespace ProjectAssets.Resources.Doc.Scripts.Model
 {
     public class Player
     {
+        public int SpawnPointIndex { get; set; }
+        
         public float FaceDirection { get; set; }
 
         public float Speed { get; set; }
