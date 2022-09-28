@@ -28,11 +28,6 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         [SerializeField] private float _hoverForce;
         [Header("Double Jump")]
         [SerializeField] private float _doubleJumpSpeed;
-        [Header("Hooking")]
-        [SerializeField] private float _hookingMaxSpeed;
-        [SerializeField] private float _hookingForce;
-        [SerializeField] private float _hookingJumpSpeed;
-        [SerializeField] private float _hookingSpeed;
         [Header("Double Jump")]
         [Header("Physics")]
         [SerializeField] private float _maxFallingSpeed;
@@ -80,11 +75,6 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             _player.HoverForce = _hoverForce;
             
             _player.DoubleJumpSpeed = _doubleJumpSpeed;
-            
-            _player.HookingMaxSpeed = _hookingMaxSpeed;
-            _player.HookingForce = _hookingForce;
-            _player.HookingJumpSpeed = _hookingJumpSpeed;
-            _player.HookingSpeed = _hookingSpeed;
             
             _player.MaxFallingSpeed = _maxFallingSpeed;
             _player.FallingStepValue = _fallingStepValue;

@@ -21,11 +21,6 @@ namespace ProjectAssets.Resources.Doc.Scripts.Model
         public float HoverForce { get; set; }
 
         public float DoubleJumpSpeed { get; set; }
-        
-        public float HookingMaxSpeed { get; set; }
-        public float HookingForce { get; set; }
-        public float HookingJumpSpeed { get; set; }
-        public float HookingSpeed { get; set; }
 
         public float MaxFallingSpeed { get; set; }
         public float FallingStepValue { get; set; }

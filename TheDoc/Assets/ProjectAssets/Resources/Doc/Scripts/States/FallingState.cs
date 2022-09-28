@@ -26,10 +26,6 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-            if (_player.HaveHooking && CanHooking())
-            {
-                _stateMachine.ChangeState(_player.States.HookingState);
-            }
             if (!_player.CanJump) return;
             _stateMachine.ChangeState(_player.States.GroundedBaseState);
             _player.FallParticles.Play();
