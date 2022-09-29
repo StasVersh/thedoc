@@ -13,6 +13,7 @@ namespace ProjectAssets.Resources.Scripts.Controllers
         [Inject] private Player _player;
         [SerializeField] private Locations _location;
         [SerializeField] private int _spawnPointIndex;
+        [SerializeField] private GameObject _pressedInterectiveButton;
 
         private void OnTriggerStay2D(Collider2D col)
         {
@@ -20,10 +21,27 @@ namespace ProjectAssets.Resources.Scripts.Controllers
             {
                 if (Input.GetKey(KeyCode.E))
                 {
+                    _pressedInterectiveButton.SetActive(true);
                     _player.SpawnPointIndex = _spawnPointIndex;
                     EventHandler.LocationExit.Invoke(); 
                     SceneManager.LoadSceneAsync(_location.ToString());
                 }
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            if (col.CompareTag("Player"))
+            {
+                _pressedInterectiveButton.SetActive(true);
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                _pressedInterectiveButton.SetActive(false);
             }
         }
     }
