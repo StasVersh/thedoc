@@ -57,14 +57,6 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             if(_rigidbody == null) return;
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0); 
             _rigidbody.AddForce(new Vector2(direction * _player.Speed, speedValue), ForceMode2D.Impulse);
-            StartCoroutine(StopJumping());
-        }
-
-        private IEnumerator StopJumping()
-        {
-            _canMove = false;
-            yield return new WaitForSeconds(_player.HookingSpeed);
-            _canMove = true;
         }
 
         public void StopJump()
@@ -122,11 +114,6 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         {
             _animator.Play(PlayerAnimations.Base);
             _animator.Play(animationName);
-        }
-
-        public bool CanMove()
-        {
-            return _canMove;
         }
     }
 }

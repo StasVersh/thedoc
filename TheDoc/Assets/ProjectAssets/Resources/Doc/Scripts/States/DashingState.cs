@@ -18,14 +18,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
             base.Enter();
             _player.CanDash = false;
             _player.Controller.SetAnimation(PlayerAnimations.Dashing);
-            if (CanHooking())
-            {
-                _player.Controller.DashingStart(_player.DashSpeed, _player.DashHeight, -_player.FaceDirection);
-            }
-            else
-            {
-                _player.Controller.DashingStart(_player.DashSpeed, _player.DashHeight, _player.FaceDirection);
-            }
+            _player.Controller.DashingStart(_player.DashSpeed, _player.DashHeight, _player.FaceDirection);
             _player.DashWayParticles.Play();
             _player.DashParticles.Play();
         }

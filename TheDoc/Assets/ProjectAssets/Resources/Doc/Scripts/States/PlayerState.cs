@@ -1,7 +1,6 @@
 ﻿using ProjectAssets.Resources.Doc.Scripts.Controllers;
 using ProjectAssets.Resources.Doc.Scripts.Model;
 using ProjectAssets.Resources.Scripts.Utilitys;
-using UnityEngine.InputSystem;
 
 namespace ProjectAssets.Resources.Doc.Scripts.States
 {
@@ -29,11 +28,6 @@ namespace ProjectAssets.Resources.Doc.Scripts.States
         private void UpdateDirection()
         {
             _direction = _player.Input.PlayerInput.Movement.ReadValue<float>();
-        }
-        
-        protected bool CanHooking()
-        {
-            return _player.IsWallHit && !_player.CanJump && _direction == _player.FaceDirection;
         }
     }
 }
