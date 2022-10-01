@@ -10,8 +10,8 @@ namespace ProjectAssets.Resources.Scripts.Controllers
         [Inject] private Player _player;
         private void Start()
         {
-            GetComponent<CinemachineVirtualCamera>().Follow = _player.GameObject.transform;
-            GetComponent<CinemachineVirtualCamera>().LookAt = _player.GameObject.transform;
+            GetComponent<CinemachineVirtualCamera>().Follow = _player.CameraTarget.transform;
+            GetComponent<CinemachineVirtualCamera>().LookAt = _player.CameraTarget.transform;
         }
     }
 }

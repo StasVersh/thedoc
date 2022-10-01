@@ -62,6 +62,24 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OnUpHold"",
+                    ""type"": ""Button"",
+                    ""id"": ""1f486f7f-5322-495c-8451-862af3f462ce"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OnDownHold"",
+                    ""type"": ""Button"",
+                    ""id"": ""d12cfd65-a949-4e87-b564-7198508e9620"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -130,6 +148,28 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
                     ""action"": ""Hover"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0c638279-38a4-4ab4-a3be-f136619666c2"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OnUpHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0f4072ed-ee87-44c4-8ee2-980cee047a6f"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OnDownHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -154,6 +194,8 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
         m_PlayerInput_Jump = m_PlayerInput.FindAction("Jump", throwIfNotFound: true);
         m_PlayerInput_Dash = m_PlayerInput.FindAction("Dash", throwIfNotFound: true);
         m_PlayerInput_Hover = m_PlayerInput.FindAction("Hover", throwIfNotFound: true);
+        m_PlayerInput_OnUpHold = m_PlayerInput.FindAction("OnUpHold", throwIfNotFound: true);
+        m_PlayerInput_OnDownHold = m_PlayerInput.FindAction("OnDownHold", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -217,6 +259,8 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerInput_Jump;
     private readonly InputAction m_PlayerInput_Dash;
     private readonly InputAction m_PlayerInput_Hover;
+    private readonly InputAction m_PlayerInput_OnUpHold;
+    private readonly InputAction m_PlayerInput_OnDownHold;
     public struct PlayerInputActions
     {
         private @InputMeneger m_Wrapper;
@@ -225,6 +269,8 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_PlayerInput_Jump;
         public InputAction @Dash => m_Wrapper.m_PlayerInput_Dash;
         public InputAction @Hover => m_Wrapper.m_PlayerInput_Hover;
+        public InputAction @OnUpHold => m_Wrapper.m_PlayerInput_OnUpHold;
+        public InputAction @OnDownHold => m_Wrapper.m_PlayerInput_OnDownHold;
         public InputActionMap Get() { return m_Wrapper.m_PlayerInput; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -246,6 +292,12 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
                 @Hover.started -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnHover;
                 @Hover.performed -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnHover;
                 @Hover.canceled -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnHover;
+                @OnUpHold.started -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnOnUpHold;
+                @OnUpHold.performed -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnOnUpHold;
+                @OnUpHold.canceled -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnOnUpHold;
+                @OnDownHold.started -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnOnDownHold;
+                @OnDownHold.performed -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnOnDownHold;
+                @OnDownHold.canceled -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnOnDownHold;
             }
             m_Wrapper.m_PlayerInputActionsCallbackInterface = instance;
             if (instance != null)
@@ -262,6 +314,12 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
                 @Hover.started += instance.OnHover;
                 @Hover.performed += instance.OnHover;
                 @Hover.canceled += instance.OnHover;
+                @OnUpHold.started += instance.OnOnUpHold;
+                @OnUpHold.performed += instance.OnOnUpHold;
+                @OnUpHold.canceled += instance.OnOnUpHold;
+                @OnDownHold.started += instance.OnOnDownHold;
+                @OnDownHold.performed += instance.OnOnDownHold;
+                @OnDownHold.canceled += instance.OnOnDownHold;
             }
         }
     }
@@ -281,5 +339,7 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnHover(InputAction.CallbackContext context);
+        void OnOnUpHold(InputAction.CallbackContext context);
+        void OnOnDownHold(InputAction.CallbackContext context);
     }
 }

@@ -55,6 +55,8 @@ namespace ProjectAssets.Resources.Doc.Scripts.Model
         public GameObject Prefab { get; set; }
         public GameObject GameObject { get; set; }
 
+        public GameObject CameraTarget { get; set; }
+
         public Player(GameObject prefab)
         {
             Prefab = prefab;

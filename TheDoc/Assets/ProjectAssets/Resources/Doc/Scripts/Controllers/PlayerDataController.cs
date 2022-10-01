@@ -45,6 +45,8 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         [SerializeField] private ParticleSystem _dashParticles;
         [SerializeField] private ParticleSystem _dashWayParticles;
         [SerializeField] private PlayerSteamController _steamController;
+        [Header("Camera")]
+        [SerializeField] private GameObject _cameraTarget;
 
         [Inject] private Player _player;
 
@@ -96,6 +98,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             _player.DashParticles = _dashParticles;
             _player.DashWayParticles = _dashWayParticles;
             _player.SteamController = _steamController;
+            _player.CameraTarget = _cameraTarget; 
         }
     }
 }
