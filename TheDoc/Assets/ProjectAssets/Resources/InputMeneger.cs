@@ -64,18 +64,9 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""OnUpHold"",
+                    ""name"": ""CameraControll"",
                     ""type"": ""Button"",
-                    ""id"": ""1f486f7f-5322-495c-8451-862af3f462ce"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""OnDownHold"",
-                    ""type"": ""Button"",
-                    ""id"": ""d12cfd65-a949-4e87-b564-7198508e9620"",
+                    ""id"": ""ac379c59-35d2-450c-bd4c-531f59813e62"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -151,23 +142,23 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""0c638279-38a4-4ab4-a3be-f136619666c2"",
-                    ""path"": """",
+                    ""id"": ""e7db14b3-e76a-4456-9788-8b5af6df3d7e"",
+                    ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""OnUpHold"",
+                    ""action"": ""CameraControll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""0f4072ed-ee87-44c4-8ee2-980cee047a6f"",
-                    ""path"": """",
+                    ""id"": ""b6a17198-2b50-4e30-ab0b-d780f125f3c4"",
+                    ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""OnDownHold"",
+                    ""action"": ""CameraControll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -194,8 +185,7 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
         m_PlayerInput_Jump = m_PlayerInput.FindAction("Jump", throwIfNotFound: true);
         m_PlayerInput_Dash = m_PlayerInput.FindAction("Dash", throwIfNotFound: true);
         m_PlayerInput_Hover = m_PlayerInput.FindAction("Hover", throwIfNotFound: true);
-        m_PlayerInput_OnUpHold = m_PlayerInput.FindAction("OnUpHold", throwIfNotFound: true);
-        m_PlayerInput_OnDownHold = m_PlayerInput.FindAction("OnDownHold", throwIfNotFound: true);
+        m_PlayerInput_CameraControll = m_PlayerInput.FindAction("CameraControll", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -259,8 +249,7 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerInput_Jump;
     private readonly InputAction m_PlayerInput_Dash;
     private readonly InputAction m_PlayerInput_Hover;
-    private readonly InputAction m_PlayerInput_OnUpHold;
-    private readonly InputAction m_PlayerInput_OnDownHold;
+    private readonly InputAction m_PlayerInput_CameraControll;
     public struct PlayerInputActions
     {
         private @InputMeneger m_Wrapper;
@@ -269,8 +258,7 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_PlayerInput_Jump;
         public InputAction @Dash => m_Wrapper.m_PlayerInput_Dash;
         public InputAction @Hover => m_Wrapper.m_PlayerInput_Hover;
-        public InputAction @OnUpHold => m_Wrapper.m_PlayerInput_OnUpHold;
-        public InputAction @OnDownHold => m_Wrapper.m_PlayerInput_OnDownHold;
+        public InputAction @CameraControll => m_Wrapper.m_PlayerInput_CameraControll;
         public InputActionMap Get() { return m_Wrapper.m_PlayerInput; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -292,12 +280,9 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
                 @Hover.started -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnHover;
                 @Hover.performed -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnHover;
                 @Hover.canceled -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnHover;
-                @OnUpHold.started -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnOnUpHold;
-                @OnUpHold.performed -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnOnUpHold;
-                @OnUpHold.canceled -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnOnUpHold;
-                @OnDownHold.started -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnOnDownHold;
-                @OnDownHold.performed -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnOnDownHold;
-                @OnDownHold.canceled -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnOnDownHold;
+                @CameraControll.started -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnCameraControll;
+                @CameraControll.performed -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnCameraControll;
+                @CameraControll.canceled -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnCameraControll;
             }
             m_Wrapper.m_PlayerInputActionsCallbackInterface = instance;
             if (instance != null)
@@ -314,12 +299,9 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
                 @Hover.started += instance.OnHover;
                 @Hover.performed += instance.OnHover;
                 @Hover.canceled += instance.OnHover;
-                @OnUpHold.started += instance.OnOnUpHold;
-                @OnUpHold.performed += instance.OnOnUpHold;
-                @OnUpHold.canceled += instance.OnOnUpHold;
-                @OnDownHold.started += instance.OnOnDownHold;
-                @OnDownHold.performed += instance.OnOnDownHold;
-                @OnDownHold.canceled += instance.OnOnDownHold;
+                @CameraControll.started += instance.OnCameraControll;
+                @CameraControll.performed += instance.OnCameraControll;
+                @CameraControll.canceled += instance.OnCameraControll;
             }
         }
     }
@@ -339,7 +321,6 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnHover(InputAction.CallbackContext context);
-        void OnOnUpHold(InputAction.CallbackContext context);
-        void OnOnDownHold(InputAction.CallbackContext context);
+        void OnCameraControll(InputAction.CallbackContext context);
     }
 }
