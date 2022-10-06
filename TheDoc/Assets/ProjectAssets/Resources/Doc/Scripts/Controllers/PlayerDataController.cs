@@ -47,6 +47,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         [SerializeField] private PlayerSteamController _steamController;
         [Header("Camera")]
         [SerializeField] private GameObject _cameraTarget;
+        [SerializeField] private double _cameraMoveSpeed;
 
         [Inject] private Player _player;
 

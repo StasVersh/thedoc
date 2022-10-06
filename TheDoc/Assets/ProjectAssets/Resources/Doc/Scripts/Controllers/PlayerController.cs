@@ -1,10 +1,8 @@
 using System;
 using System.Collections;
 using ProjectAssets.Resources.Doc.Scripts.Model;
-using ProjectAssets.Resources.Doc.Scripts.States;
 using ProjectAssets.Resources.Doc.Scripts.Values;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using Zenject;
 
 namespace ProjectAssets.Resources.Doc.Scripts.Controllers
@@ -41,7 +39,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
 
             _rigidbody.velocity = rigidbodyVelocity;
         }
-
+        
         public void Move(float speedValue, float direction)
         {
             if (direction != 0.0f)

@@ -57,6 +57,8 @@ namespace ProjectAssets.Resources.Doc.Scripts.Model
 
         public GameObject CameraTarget { get; set; }
 
+        public float CameraMoveSpeed { get; set; }
+
         public Player(GameObject prefab)
         {
             Prefab = prefab;

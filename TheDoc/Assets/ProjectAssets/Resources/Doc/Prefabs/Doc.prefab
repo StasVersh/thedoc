@@ -9827,6 +9827,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1395769272347747735}
+  - component: {fileID: 6982392455123343108}
   m_Layer: 0
   m_Name: CameraTarget
   m_TagString: Untagged
@@ -9849,6 +9850,21 @@ Transform:
   m_Father: {fileID: 7873625778897775028}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6982392455123343108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2848715750331976298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e32d7f9ae29379e448cbd74ee07284f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _upCameraPosition: {fileID: 4718861210989245656}
+  _idleCameraPosition: {fileID: 7496983236887550709}
+  _downCameraPosition: {fileID: 3284088110704917616}
 --- !u!1 &3030396489320107569
 GameObject:
   m_ObjectHideFlags: 0
@@ -24708,6 +24724,7 @@ MonoBehaviour:
   _dashWayParticles: {fileID: 7913059524250819278}
   _steamController: {fileID: 3483930790501519915}
   _cameraTarget: {fileID: 2848715750331976298}
+  _cameraMoveSpeed: 2
 --- !u!114 &7489802075148125055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24791,12 +24808,12 @@ MonoBehaviour:
     m_ActionName: PlayerInput/Hover[/Keyboard/shift]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 1f486f7f-5322-495c-8451-862af3f462ce
-    m_ActionName: PlayerInput/OnUpHold
+    m_ActionId: d402e902-76fd-42dc-bd2c-9b5e7523e870
+    m_ActionName: PlayerInput/CameraHoldUp[/Keyboard/w]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: d12cfd65-a949-4e87-b564-7198508e9620
-    m_ActionName: PlayerInput/OnDownHold
+    m_ActionId: 7df02847-0c50-439d-8c3e-0d506cd6ae43
+    m_ActionName: PlayerInput/CameraHoldDown[/Keyboard/s]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerInput
@@ -29624,7 +29641,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3835088607739686034}
   m_Layer: 0
-  m_Name: PlayerPoint
+  m_Name: IdleCameraPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
