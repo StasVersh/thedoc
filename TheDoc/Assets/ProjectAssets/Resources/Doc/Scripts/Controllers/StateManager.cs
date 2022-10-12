@@ -1,6 +1,6 @@
-﻿using ProjectAssets.Resources.Doc.Scripts.Model;
+﻿using Assets.ProjectAssets.Resources.Doc.Scripts.States;
+using ProjectAssets.Resources.Doc.Scripts.Model;
 using ProjectAssets.Resources.Doc.Scripts.States;
-using ProjectAssets.Resources.Scripts.Utilitys;
 using UnityEngine;
 using Zenject;
 
@@ -20,6 +20,9 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         public HoveringState HoveringState { get; private set; }
         public DashingState DashingState { get; private set; }
         public DoubleJumpState DoubleJumpState { get; private set; }
+        public ThomsDethState ThomsDethState { get; private set; }
+        public ThomsSpawningState ThomsSpawningState { get; private set; }
+
         private void OnEnable()
         {
             _player.States = this;
@@ -37,6 +40,8 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             HoveringState = new HoveringState(_stateMachine, _player);
             DashingState = new DashingState(_stateMachine, _player);
             DoubleJumpState = new DoubleJumpState(_stateMachine, _player);
+            ThomsDethState = new ThomsDethState(_stateMachine, _player);
+            ThomsSpawningState = new ThomsSpawningState(_stateMachine, _player);
 
             _stateMachine.Initialize(FallingState);
         }

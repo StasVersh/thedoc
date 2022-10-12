@@ -1214,6 +1214,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddbdce3243c4fd446a8daafa0e9b5222, type: 3}
+--- !u!114 &417856500 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8221330950309525403, guid: ddbdce3243c4fd446a8daafa0e9b5222, type: 3}
+  m_PrefabInstance: {fileID: 417856499}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171497525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b317f8468dffba47bbd3e2d0a60600e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &420830450
 GameObject:
   m_ObjectHideFlags: 0
@@ -6920,6 +6931,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3101912640014474100, guid: ddbdce3243c4fd446a8daafa0e9b5222, type: 3}
   m_PrefabInstance: {fileID: 724021557}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &724021559 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8221330950309525403, guid: ddbdce3243c4fd446a8daafa0e9b5222, type: 3}
+  m_PrefabInstance: {fileID: 724021557}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724021558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b317f8468dffba47bbd3e2d0a60600e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &770165525
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7769,6 +7791,22 @@ PrefabInstance:
       propertyPath: _spawnPoints.Array.data[0]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7825665049572511143, guid: 083c3b2269a1c894e97c38c54e54d6e0, type: 3}
+      propertyPath: SpawnPointSetters.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7825665049572511143, guid: 083c3b2269a1c894e97c38c54e54d6e0, type: 3}
+      propertyPath: SpawnPointSetters.Array.data[0]
+      value: 
+      objectReference: {fileID: 417856500}
+    - target: {fileID: 7825665049572511143, guid: 083c3b2269a1c894e97c38c54e54d6e0, type: 3}
+      propertyPath: SpawnPointSetters.Array.data[1]
+      value: 
+      objectReference: {fileID: 724021559}
+    - target: {fileID: 7825665049572511143, guid: 083c3b2269a1c894e97c38c54e54d6e0, type: 3}
+      propertyPath: SpawnPointSetters.Array.data[2]
+      value: 
+      objectReference: {fileID: 1792539773}
     - target: {fileID: 8692313208875943485, guid: 083c3b2269a1c894e97c38c54e54d6e0, type: 3}
       propertyPath: m_Name
       value: Translations
@@ -8129,7 +8167,7 @@ PrefabInstance:
       objectReference: {fileID: 1393925931}
     - target: {fileID: 2317477318367562529, guid: 00d23417f4970f340bea74653ff4151a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.20872316
+      value: 0.20872213
       objectReference: {fileID: 0}
     - target: {fileID: 2317477318367562529, guid: 00d23417f4970f340bea74653ff4151a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -116050,6 +116088,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3101912640014474100, guid: ddbdce3243c4fd446a8daafa0e9b5222, type: 3}
   m_PrefabInstance: {fileID: 1792539771}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1792539773 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8221330950309525403, guid: ddbdce3243c4fd446a8daafa0e9b5222, type: 3}
+  m_PrefabInstance: {fileID: 1792539771}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792539772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b317f8468dffba47bbd3e2d0a60600e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1809059078
 GameObject:
   m_ObjectHideFlags: 0

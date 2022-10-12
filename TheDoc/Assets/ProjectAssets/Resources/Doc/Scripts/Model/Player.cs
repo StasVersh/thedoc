@@ -1,4 +1,5 @@
-﻿using ProjectAssets.Resources.Doc.Scripts.Controllers;
+﻿using Assets.ProjectAssets.Resources.Scripts.Controllers;
+using ProjectAssets.Resources.Doc.Scripts.Controllers;
 using UnityEngine;
 
 namespace ProjectAssets.Resources.Doc.Scripts.Model
@@ -43,6 +44,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Model
         public ParticleSystem DashParticles { get; set; }
         public ParticleSystem DashWayParticles { get; set; }
 
+        public SpawnPointSetter SpawnPoint { get; set; }
         public InputMeneger Input { get; set; }
         public PlayerSteamController SteamController { get; set; }
         public PlayerController Controller { get; set; }

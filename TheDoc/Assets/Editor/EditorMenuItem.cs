@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Assets.ProjectAssets.Resources.Scripts.Controllers;
 using Cinemachine;
 using ProjectAssets.Resources.Doc.Scripts.Controllers;
 using UnityEditor;
@@ -20,16 +21,16 @@ namespace Editor
         {
             var point = (GameObject)PrefabUtility.InstantiatePrefab(UnityEngine.Resources.Load("Prefabs/Point (0)"));
             var parent = GameObject.Find("Translations/Spawn").transform;
-            var script = parent.GetComponent<DocSpawnPointController>();
+            var script = parent.GetComponent<SpawnPointController>();
             point.name = $"Point {parent.childCount}";
             point.transform.parent = parent;
-            var list = new List<GameObject>();
+            var list = new List<SpawnPointSetter>();
             for (int i = 0; i < parent.childCount; i++)
             {
-                list.Add(parent.GetChild(i).gameObject);
+                list.Add(parent.GetChild(i).gameObject.GetComponent<SpawnPointSetter>());
             }
 
-            script.SpawnPoints = list;
+            script.SpawnPointSetters = list;
         }
         
         [MenuItem("GameObject/TheDoc/GoTo")]

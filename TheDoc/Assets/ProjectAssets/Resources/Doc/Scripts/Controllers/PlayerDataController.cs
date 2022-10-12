@@ -1,7 +1,5 @@
-﻿using System;
-using ProjectAssets.Resources.Doc.Scripts.Model;
+﻿using ProjectAssets.Resources.Doc.Scripts.Model;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using Zenject;
 
 namespace ProjectAssets.Resources.Doc.Scripts.Controllers
@@ -41,11 +39,13 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         [SerializeField] private ParticleSystem _dashWayParticles;
         [SerializeField] private PlayerSteamController _steamController;
 
+        public string name;
+
         [Inject] private Player _player;
 
-        private void OnEnable()
+        private void Awake()
         {
-            _player.FaceDirection = _faceDirection;
+            if(_player.FaceDirection == 0.0f) _player.FaceDirection = _faceDirection;
             _player.CanDash = true;
             _player.CanDoubleJump = true;
             UpdateData();
