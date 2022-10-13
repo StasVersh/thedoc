@@ -42,21 +42,12 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "CameraHoldUp",
+                    "name": "CameraHold",
                     "type": "Button",
                     "id": "d402e902-76fd-42dc-bd2c-9b5e7523e870",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Hold(duration=10,pressPoint=1)",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "CameraHoldDown",
-                    "type": "Button",
-                    "id": "7df02847-0c50-439d-8c3e-0d506cd6ae43",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold(duration=1)",
                     "initialStateCheck": false
                 }
             ],
@@ -128,26 +119,37 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "60a68c2b-e89c-42c9-986c-dae911942762",
-                    "path": "<Keyboard>/w",
+                    "name": "1D Axis",
+                    "id": "09f851d1-8d54-48d9-94ae-61ee5645eda1",
+                    "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "CameraHoldUp",
-                    "isComposite": false,
+                    "action": "CameraHold",
+                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "60cb41f5-7e1f-40e1-af90-e21c9a0dee03",
+                    "name": "negative",
+                    "id": "eb4a38cc-4b18-4e06-b066-31789bf4a257",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "CameraHoldDown",
+                    "action": "CameraHold",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "c65243f6-be78-4eff-af14-eb102cfdea74",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CameraHold",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

@@ -64,21 +64,12 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""CameraHoldUp"",
+                    ""name"": ""CameraHold"",
                     ""type"": ""Button"",
                     ""id"": ""d402e902-76fd-42dc-bd2c-9b5e7523e870"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Hold(duration=10,pressPoint=1)"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""CameraHoldDown"",
-                    ""type"": ""Button"",
-                    ""id"": ""7df02847-0c50-439d-8c3e-0d506cd6ae43"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold(duration=1)"",
                     ""initialStateCheck"": false
                 }
             ],
@@ -150,26 +141,37 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""60a68c2b-e89c-42c9-986c-dae911942762"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""name"": ""1D Axis"",
+                    ""id"": ""09f851d1-8d54-48d9-94ae-61ee5645eda1"",
+                    ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""CameraHoldUp"",
-                    ""isComposite"": false,
+                    ""action"": ""CameraHold"",
+                    ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""60cb41f5-7e1f-40e1-af90-e21c9a0dee03"",
+                    ""name"": ""negative"",
+                    ""id"": ""eb4a38cc-4b18-4e06-b066-31789bf4a257"",
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""CameraHoldDown"",
+                    ""action"": ""CameraHold"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": false
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""c65243f6-be78-4eff-af14-eb102cfdea74"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -194,8 +196,7 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
         m_PlayerInput_Jump = m_PlayerInput.FindAction("Jump", throwIfNotFound: true);
         m_PlayerInput_Dash = m_PlayerInput.FindAction("Dash", throwIfNotFound: true);
         m_PlayerInput_Hover = m_PlayerInput.FindAction("Hover", throwIfNotFound: true);
-        m_PlayerInput_CameraHoldUp = m_PlayerInput.FindAction("CameraHoldUp", throwIfNotFound: true);
-        m_PlayerInput_CameraHoldDown = m_PlayerInput.FindAction("CameraHoldDown", throwIfNotFound: true);
+        m_PlayerInput_CameraHold = m_PlayerInput.FindAction("CameraHold", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -259,8 +260,7 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerInput_Jump;
     private readonly InputAction m_PlayerInput_Dash;
     private readonly InputAction m_PlayerInput_Hover;
-    private readonly InputAction m_PlayerInput_CameraHoldUp;
-    private readonly InputAction m_PlayerInput_CameraHoldDown;
+    private readonly InputAction m_PlayerInput_CameraHold;
     public struct PlayerInputActions
     {
         private @InputMeneger m_Wrapper;
@@ -269,8 +269,7 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_PlayerInput_Jump;
         public InputAction @Dash => m_Wrapper.m_PlayerInput_Dash;
         public InputAction @Hover => m_Wrapper.m_PlayerInput_Hover;
-        public InputAction @CameraHoldUp => m_Wrapper.m_PlayerInput_CameraHoldUp;
-        public InputAction @CameraHoldDown => m_Wrapper.m_PlayerInput_CameraHoldDown;
+        public InputAction @CameraHold => m_Wrapper.m_PlayerInput_CameraHold;
         public InputActionMap Get() { return m_Wrapper.m_PlayerInput; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -292,12 +291,9 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
                 @Hover.started -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnHover;
                 @Hover.performed -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnHover;
                 @Hover.canceled -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnHover;
-                @CameraHoldUp.started -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnCameraHoldUp;
-                @CameraHoldUp.performed -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnCameraHoldUp;
-                @CameraHoldUp.canceled -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnCameraHoldUp;
-                @CameraHoldDown.started -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnCameraHoldDown;
-                @CameraHoldDown.performed -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnCameraHoldDown;
-                @CameraHoldDown.canceled -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnCameraHoldDown;
+                @CameraHold.started -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnCameraHold;
+                @CameraHold.performed -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnCameraHold;
+                @CameraHold.canceled -= m_Wrapper.m_PlayerInputActionsCallbackInterface.OnCameraHold;
             }
             m_Wrapper.m_PlayerInputActionsCallbackInterface = instance;
             if (instance != null)
@@ -314,12 +310,9 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
                 @Hover.started += instance.OnHover;
                 @Hover.performed += instance.OnHover;
                 @Hover.canceled += instance.OnHover;
-                @CameraHoldUp.started += instance.OnCameraHoldUp;
-                @CameraHoldUp.performed += instance.OnCameraHoldUp;
-                @CameraHoldUp.canceled += instance.OnCameraHoldUp;
-                @CameraHoldDown.started += instance.OnCameraHoldDown;
-                @CameraHoldDown.performed += instance.OnCameraHoldDown;
-                @CameraHoldDown.canceled += instance.OnCameraHoldDown;
+                @CameraHold.started += instance.OnCameraHold;
+                @CameraHold.performed += instance.OnCameraHold;
+                @CameraHold.canceled += instance.OnCameraHold;
             }
         }
     }
@@ -339,7 +332,6 @@ public partial class @InputMeneger : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnHover(InputAction.CallbackContext context);
-        void OnCameraHoldUp(InputAction.CallbackContext context);
-        void OnCameraHoldDown(InputAction.CallbackContext context);
+        void OnCameraHold(InputAction.CallbackContext context);
     }
 }

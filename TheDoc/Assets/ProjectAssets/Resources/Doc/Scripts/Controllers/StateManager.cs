@@ -22,6 +22,8 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
         public DoubleJumpState DoubleJumpState { get; private set; }
         public HookingState HookingState { get; private set; }
         public HookingJumpState HookingJumpState { get; private set; }
+        public LookingState LookingState { get; private set; }
+
         private void OnEnable()
         {
             _player.States = this;
@@ -41,6 +43,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             DoubleJumpState = new DoubleJumpState(_stateMachine, _player);
             HookingState = new HookingState(_stateMachine, _player);
             HookingJumpState = new HookingJumpState(_stateMachine, _player);
+            LookingState = new LookingState(_stateMachine, _player);
 
             _stateMachine.Initialize(FallingState);
         }

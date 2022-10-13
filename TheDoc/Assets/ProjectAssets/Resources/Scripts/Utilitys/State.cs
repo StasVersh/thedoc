@@ -36,10 +36,6 @@ namespace ProjectAssets.Resources.Scripts.Utilitys
         {
 
         }
-        
-        public void Debug(string log)
-        {
-        }
-        
+
     }
 }

@@ -35,6 +35,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Model
         public bool CanDoubleJump { get; set; }
         public bool IsFalling { get; set; }
         public bool IsWallHit { get; set; }
+        public bool IsLooking { get; set; } 
 
         public bool HaveHover { get; set; }
         public bool HaveDash { get; set; }
@@ -56,7 +57,8 @@ namespace ProjectAssets.Resources.Doc.Scripts.Model
         public GameObject GameObject { get; set; }
 
         public GameObject CameraTarget { get; set; }
-
+        public GameObject UpCameraPosition { get; set; }
+        public GameObject DownCameraPosition { get; set; }
         public float CameraMoveSpeed { get; set; }
 
         public Player(GameObject prefab)
