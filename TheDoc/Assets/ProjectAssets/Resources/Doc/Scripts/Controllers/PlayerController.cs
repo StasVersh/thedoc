@@ -1,10 +1,7 @@
 using System;
-using System.Collections;
 using ProjectAssets.Resources.Doc.Scripts.Model;
-using ProjectAssets.Resources.Doc.Scripts.States;
 using ProjectAssets.Resources.Doc.Scripts.Values;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using Zenject;
 
 namespace ProjectAssets.Resources.Doc.Scripts.Controllers
@@ -16,8 +13,7 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
 
         private Rigidbody2D _rigidbody;
         private Animator _animator;
-        private bool _canMove;
-        
+
         private void OnEnable()
         {
             _player.Controller = this;
@@ -25,14 +21,14 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
 
         private void Start()
         {
+            SetScale();
             _rigidbody = GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
-            transform.localScale = _player.FaceDirection > 0 ? new Vector3(1, 1) : new Vector3(-1, 1);
         }
 
         private void Update()
         {
-            transform.localScale = _player.FaceDirection > 0 ? new Vector3(1, 1) : new Vector3(-1, 1);
+            SetScale();
             var rigidbodyVelocity = _rigidbody.velocity;
             if (rigidbodyVelocity.y < -_player.MaxFallingSpeed)
             {
@@ -40,6 +36,11 @@ namespace ProjectAssets.Resources.Doc.Scripts.Controllers
             }
 
             _rigidbody.velocity = rigidbodyVelocity;
+        }
+
+        public void SetScale()
+        {
+            transform.localScale = _player.FaceDirection > 0 ? new Vector3(1, 1) : new Vector3(-1, 1);
         }
 
         public void Move(float speedValue, float direction)

@@ -10,6 +10,14 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/ProjectAssets/Resources/Doc/Scripts/Controllers/DocSpawnPointController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ProjectAssets/Resources/Scripts/Controllers/TargetSetController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -113,6 +121,11 @@
       <workItem from="1663077908423" duration="6020000" />
       <workItem from="1663964038428" duration="594000" />
       <workItem from="1664282518064" duration="1033000" />
+      <workItem from="1664627640169" duration="4733000" />
+      <workItem from="1664633396102" duration="3992000" />
+      <workItem from="1664696900993" duration="3383000" />
+      <workItem from="1665121176080" duration="19000" />
+      <workItem from="1665121307234" duration="9350000" />
     </task>
     <servers />
   </component>

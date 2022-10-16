@@ -13,5 +13,7 @@ public class OffonController : MonoBehaviour
         _animator = GetComponent<Animator>();
         _animator.Play("On");
         EventHandler.LocationExit.AddListener(() => _animator.Play("Off"));
+        EventHandler.ThromsDeth.AddListener(() => _animator.Play("Off"));
+        EventHandler.Spawn.AddListener(() => _animator.Play("On"));
     }
 }

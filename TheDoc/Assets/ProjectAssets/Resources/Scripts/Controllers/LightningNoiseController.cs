@@ -19,7 +19,6 @@ namespace ProjectAssets.Resources.Scripts.Controllers
         private void Start()
         {
             _light = GetComponent<Light2D>();
-            //StartCoroutine(Noise());
         }
 
         private void Update()
@@ -29,15 +28,6 @@ namespace ProjectAssets.Resources.Scripts.Controllers
             if (_light.intensity > _maxValue || _light.intensity < _minValue)
             {
                 _light.intensity = (_maxValue + _minValue) / 2;
-            }
-        }
-
-        private IEnumerator Noise()
-        {
-            while (true)
-            {
-                yield return new WaitForSeconds(_noise / 1000);
-                _light.intensity = Random.Range(_minValue, _maxValue);
             }
         }
     }
